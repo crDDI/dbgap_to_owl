@@ -1,0 +1,3141 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix gap: <http://ncbi.nlm.nih.gov/gap/mms#> .
+@prefix gapi: <http://ncbi.nlm.nih.gov/gapi/mms#> .
+@prefix iso: <http://metadata-standards.org/iso11179-3.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gap: a owl:Ontology ;
+    owl:versionIRI <http://ncbi.nlm.nih.gov/gap/mms/v2.1.5> .
+
+gap:GaPExchange a owl:Class ;
+    rdfs:label "GAP GaPExchange" ;
+    dc:description "Root element for dbGaP information exchange" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass gap:MetaLinks ;
+            owl:onProperty gap:GaPExchange_MetaLinks ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass gap:MetaVariables ;
+            owl:onProperty gap:GaPExchange_MetaVariables ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass gap:Projects ;
+            owl:onProperty gap:GaPExchange_Projects ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass gap:Studies ;
+            owl:onProperty gap:GaPExchange_Studies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "GaPExchange" .
+
+gap:Accession_ID a owl:DatatypeProperty ;
+    rdfs:label "GAP Accession_ID" ;
+    rdfs:domain gap:Accession ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Accession_ID" .
+
+gap:Accession_Status a owl:DatatypeProperty ;
+    rdfs:label "GAP Accession_Status" ;
+    rdfs:domain gap:Accession ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Accession_Status" .
+
+gap:Accession_ref_Policy_Id a owl:DatatypeProperty ;
+    rdfs:label "GAP Accession_ref_Policy_Id" ;
+    rdfs:domain gap:Accession ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Accession_ref_Policy_Id" .
+
+gap:Analysis_analysisType a owl:DatatypeProperty ;
+    rdfs:label "GAP Analysis_analysisType" ;
+    rdfs:domain gap:Analysis ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Analysis_analysisType" .
+
+gap:Analysis_genomeBuild a owl:DatatypeProperty ;
+    rdfs:label "GAP Analysis_genomeBuild" ;
+    rdfs:domain gap:Analysis ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Analysis_genomeBuild" .
+
+gap:Analysis_pha a owl:DatatypeProperty ;
+    rdfs:label "GAP Analysis_pha" ;
+    rdfs:domain gap:Analysis ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Analysis_pha" .
+
+gap:Analysis_snpBuild a owl:DatatypeProperty ;
+    rdfs:label "GAP Analysis_snpBuild" ;
+    rdfs:domain gap:Analysis ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Analysis_snpBuild" .
+
+gap:Analysis_uId a owl:DatatypeProperty ;
+    rdfs:label "GAP Analysis_uId" ;
+    rdfs:domain gap:Analysis ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Analysis_uId" .
+
+gap:Book_authors a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_authors" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Book_authors" .
+
+gap:Book_bookName a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_bookName" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Book_bookName" .
+
+gap:Book_chapterName a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_chapterName" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Book_chapterName" .
+
+gap:Book_editors a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_editors" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Book_editors" .
+
+gap:Book_notes a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_notes" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Book_notes" .
+
+gap:Book_pubCity a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_pubCity" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Book_pubCity" .
+
+gap:Book_pubYear a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_pubYear" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Book_pubYear" .
+
+gap:Book_publisher a owl:DatatypeProperty ;
+    rdfs:label "GAP Book_publisher" ;
+    rdfs:domain gap:Book ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Book_publisher" .
+
+gap:CoVariate_accession a owl:DatatypeProperty ;
+    rdfs:label "GAP CoVariate_accession" ;
+    rdfs:domain gap:CoVariate ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "CoVariate_accession" .
+
+gap:CoVariate_name a owl:DatatypeProperty ;
+    rdfs:label "GAP CoVariate_name" ;
+    rdfs:domain gap:CoVariate ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "CoVariate_name" .
+
+gap:Comment_type a owl:DatatypeProperty ;
+    rdfs:label "GAP Comment_type" ;
+    rdfs:domain gap:Comment ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Comment_type" .
+
+gap:Configuration_DisplayPublicSummary_no a _:N403b9dcf3a704de08bf418e095b63707,
+        owl:NamedIndividual ;
+    owl:hasValue "no" .
+
+gap:Configuration_DisplayPublicSummary_yes a _:N403b9dcf3a704de08bf418e095b63707,
+        owl:NamedIndividual ;
+    owl:hasValue "yes" .
+
+gap:Configuration_DisplayResearchStatement_no a _:Nb60ae8ef3c894e47bcd1921159bdfbfd,
+        owl:NamedIndividual ;
+    owl:hasValue "no" .
+
+gap:Configuration_DisplayResearchStatement_yes a _:Nb60ae8ef3c894e47bcd1921159bdfbfd,
+        owl:NamedIndividual ;
+    owl:hasValue "yes" .
+
+gap:ConsentGroup_groupNum a owl:DatatypeProperty ;
+    rdfs:label "GAP ConsentGroup_groupNum" ;
+    dc:description "An integer assigned to the consent group. It is included in the variable accesssion as c# (e.g., phv00010790.v2.p2.c1)." ;
+    rdfs:domain gap:ConsentGroup ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "ConsentGroup_groupNum" .
+
+gap:ConsentGroup_longName a owl:DatatypeProperty ;
+    rdfs:label "GAP ConsentGroup_longName" ;
+    dc:description "A longer name like 'General Reasearch Use'." ;
+    rdfs:domain gap:ConsentGroup ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "ConsentGroup_longName" .
+
+gap:ConsentGroup_shortName a owl:DatatypeProperty ;
+    rdfs:label "GAP ConsentGroup_shortName" ;
+    dc:description "A short name like 'GRU'." ;
+    rdfs:domain gap:ConsentGroup ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "ConsentGroup_shortName" .
+
+gap:DacInfo_ssDacId a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_ssDacId" ;
+    rdfs:domain gap:DacInfo ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DacInfo_ssDacId" .
+
+gap:DataSet_accession a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_accession" ;
+    dc:description "Dataset accession number" ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DataSet_accession" .
+
+gap:DataSet_createDate a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_createDate" ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "DataSet_createDate" .
+
+gap:DataSet_ddURI a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_ddURI" ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:anyURI ;
+    skos:prefLabel "DataSet_ddURI" .
+
+gap:DataSet_embargoReleaseDate a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_embargoReleaseDate" ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "DataSet_embargoReleaseDate" .
+
+gap:DataSet_longitudinal a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_longitudinal" ;
+    dc:description "We label a dataset as 'logitudinal' if multiple values were collected for any subject-variable pair." ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "DataSet_longitudinal" .
+
+gap:DataSet_modDate a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_modDate" ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "DataSet_modDate" .
+
+gap:DataSet_simulated a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_simulated" ;
+    dc:description "Whether the data is simulated or not." ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "DataSet_simulated" .
+
+gap:DataSet_subDatasetType a owl:DatatypeProperty ;
+    rdfs:label "GAP DataSet_subDatasetType" ;
+    dc:description "Whether the dataset contains the following information: subject IDs and their consents, pedigree, sample IDs and sample-subject mappings, trace IDs." ;
+    rdfs:domain gap:DataSet ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DataSet_subDatasetType" .
+
+gap:DataSet_subDatasetType_Consent a _:Nb20ea296802049d9965b5a58424efd9b,
+        owl:NamedIndividual ;
+    owl:hasValue "Consent" .
+
+gap:DataSet_subDatasetType_Pedigree a _:Nb20ea296802049d9965b5a58424efd9b,
+        owl:NamedIndividual ;
+    owl:hasValue "Pedigree" .
+
+gap:DataSet_subDatasetType_Sample a _:Nb20ea296802049d9965b5a58424efd9b,
+        owl:NamedIndividual ;
+    owl:hasValue "Sample" .
+
+gap:DataSet_subDatasetType_Trace a _:Nb20ea296802049d9965b5a58424efd9b,
+        owl:NamedIndividual ;
+    owl:hasValue "Trace" .
+
+gap:DataUseCertificate_FileName a owl:DatatypeProperty ;
+    rdfs:label "GAP DataUseCertificate_FileName" ;
+    rdfs:domain gap:DataUseCertificate ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DataUseCertificate_FileName" .
+
+gap:DataUseCertificate_FilePath a owl:DatatypeProperty ;
+    rdfs:label "GAP DataUseCertificate_FilePath" ;
+    rdfs:domain gap:DataUseCertificate ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DataUseCertificate_FilePath" .
+
+gap:DataUseCertificate_Label a owl:DatatypeProperty ;
+    rdfs:label "GAP DataUseCertificate_Label" ;
+    rdfs:domain gap:DataUseCertificate ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DataUseCertificate_Label" .
+
+gap:Disease_vocab_id a owl:DatatypeProperty ;
+    rdfs:label "GAP Disease_vocab_id" ;
+    rdfs:domain gap:Disease ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Disease_vocab_id" .
+
+gap:Disease_vocab_source a owl:DatatypeProperty ;
+    rdfs:label "GAP Disease_vocab_source" ;
+    rdfs:domain gap:Disease ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Disease_vocab_source" .
+
+gap:Disease_vocab_term a owl:DatatypeProperty ;
+    rdfs:label "GAP Disease_vocab_term" ;
+    dc:description "Mesh Terms and MESH Ids" ;
+    rdfs:domain gap:Disease ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Disease_vocab_term" .
+
+gap:DocumentPart_documentUid a owl:DatatypeProperty ;
+    rdfs:label "GAP DocumentPart_documentUid" ;
+    rdfs:domain gap:DocumentPart ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "DocumentPart_documentUid" .
+
+gap:DocumentPart_phd a owl:DatatypeProperty ;
+    rdfs:label "GAP DocumentPart_phd" ;
+    dc:description "dbGaP document accession" ;
+    rdfs:domain gap:DocumentPart ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DocumentPart_phd" .
+
+gap:DocumentPart_sectionId a owl:DatatypeProperty ;
+    rdfs:label "GAP DocumentPart_sectionId" ;
+    rdfs:domain gap:DocumentPart ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DocumentPart_sectionId" .
+
+gap:Document_createDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_createDate" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Document_createDate" .
+
+gap:Document_displayStatus_public a _:Nd68be6fe9ddc49dca3ed1ffa9fa304b5,
+        owl:NamedIndividual ;
+    owl:hasValue "public" .
+
+gap:Document_displayStatus_stage-1 a _:Nd68be6fe9ddc49dca3ed1ffa9fa304b5,
+        owl:NamedIndividual ;
+    owl:hasValue "stage-1" .
+
+gap:Document_displayStatus_stage-2 a _:Nd68be6fe9ddc49dca3ed1ffa9fa304b5,
+        owl:NamedIndividual ;
+    owl:hasValue "stage-2" .
+
+gap:Document_displayStatus_unknown a _:Nd68be6fe9ddc49dca3ed1ffa9fa304b5,
+        owl:NamedIndividual ;
+    owl:hasValue "unknown" .
+
+gap:Document_modDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_modDate" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Document_modDate" .
+
+gap:Document_phd a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_phd" ;
+    dc:description "dbGaP document accession" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Document_phd" .
+
+gap:Document_publicURI a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_publicURI" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:anyURI ;
+    skos:prefLabel "Document_publicURI" .
+
+gap:Document_type a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_type" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Document_type" .
+
+gap:Document_uId a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_uId" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "Document_uId" .
+
+gap:Document_urlToHtml a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_urlToHtml" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:anyURI ;
+    skos:prefLabel "Document_urlToHtml" .
+
+gap:Document_urlToXml a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_urlToXml" ;
+    rdfs:domain gap:Document ;
+    rdfs:range xsd:anyURI ;
+    skos:prefLabel "Document_urlToXml" .
+
+gap:Document_xmlStatus_develop a _:Na8be61bc8c6148e3999e244a937ac7bf,
+        owl:NamedIndividual ;
+    owl:hasValue "develop" .
+
+gap:Document_xmlStatus_preview a _:Na8be61bc8c6148e3999e244a937ac7bf,
+        owl:NamedIndividual ;
+    owl:hasValue "preview" .
+
+gap:Document_xmlStatus_public a _:Na8be61bc8c6148e3999e244a937ac7bf,
+        owl:NamedIndividual ;
+    owl:hasValue "public" .
+
+gap:Document_xmlStatus_unknown a _:Na8be61bc8c6148e3999e244a937ac7bf,
+        owl:NamedIndividual ;
+    owl:hasValue "unknown" .
+
+gap:GenotypeDataset_data_type a owl:DatatypeProperty ;
+    rdfs:label "GAP GenotypeDataset_data_type" ;
+    rdfs:domain gap:GenotypeDataset ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "GenotypeDataset_data_type" .
+
+gap:GenotypeDataset_description a owl:DatatypeProperty ;
+    rdfs:label "GAP GenotypeDataset_description" ;
+    rdfs:domain gap:GenotypeDataset ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "GenotypeDataset_description" .
+
+gap:GenotypeDataset_genotyping_array a owl:DatatypeProperty ;
+    rdfs:label "GAP GenotypeDataset_genotyping_array" ;
+    rdfs:domain gap:GenotypeDataset ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "GenotypeDataset_genotyping_array" .
+
+gap:GenotypeDataset_name a owl:DatatypeProperty ;
+    rdfs:label "GAP GenotypeDataset_name" ;
+    rdfs:domain gap:GenotypeDataset ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "GenotypeDataset_name" .
+
+gap:GenotypeDataset_sample_count a owl:DatatypeProperty ;
+    rdfs:label "GAP GenotypeDataset_sample_count" ;
+    rdfs:domain gap:GenotypeDataset ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "GenotypeDataset_sample_count" .
+
+gap:GtyPlatform_probeNum a owl:DatatypeProperty ;
+    rdfs:label "GAP GtyPlatform_probeNum" ;
+    rdfs:domain gap:GtyPlatform ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "GtyPlatform_probeNum" .
+
+gap:GtyPlatform_snpBatchId a owl:DatatypeProperty ;
+    rdfs:label "GAP GtyPlatform_snpBatchId" ;
+    rdfs:domain gap:GtyPlatform ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "GtyPlatform_snpBatchId" .
+
+gap:Header_title a owl:DatatypeProperty ;
+    rdfs:label "GAP Header_title" ;
+    rdfs:domain gap:Header ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Header_title" .
+
+gap:Journal_authors a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_authors" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Journal_authors" .
+
+gap:Journal_endpg a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_endpg" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Journal_endpg" .
+
+gap:Journal_journal a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_journal" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Journal_journal" .
+
+gap:Journal_journalName a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_journalName" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Journal_journalName" .
+
+gap:Journal_notes a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_notes" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Journal_notes" .
+
+gap:Journal_startpg a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_startpg" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Journal_startpg" .
+
+gap:Journal_title a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_title" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Journal_title" .
+
+gap:Journal_volume a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_volume" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Journal_volume" .
+
+gap:Journal_year a owl:DatatypeProperty ;
+    rdfs:label "GAP Journal_year" ;
+    rdfs:domain gap:Journal ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Journal_year" .
+
+gap:MetaLink_metavariable_id a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaLink_metavariable_id" ;
+    rdfs:domain gap:MetaLink ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "MetaLink_metavariable_id" .
+
+gap:MetaLink_variableAccession a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaLink_variableAccession" ;
+    rdfs:domain gap:MetaLink ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaLink_variableAccession" .
+
+gap:MetaVariableMethod_comment a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariableMethod_comment" ;
+    rdfs:domain gap:MetaVariableMethod ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariableMethod_comment" .
+
+gap:MetaVariableMethod_id a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariableMethod_id" ;
+    rdfs:domain gap:MetaVariableMethod ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "MetaVariableMethod_id" .
+
+gap:MetaVariableMethod_method a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariableMethod_method" ;
+    rdfs:domain gap:MetaVariableMethod ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariableMethod_method" .
+
+gap:MetaVariable_UMLS_CUI a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_UMLS_CUI" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariable_UMLS_CUI" .
+
+gap:MetaVariable_comment a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_comment" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariable_comment" .
+
+gap:MetaVariable_id a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_id" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "MetaVariable_id" .
+
+gap:MetaVariable_mapping a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_mapping" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariable_mapping" .
+
+gap:MetaVariable_method_id a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_method_id" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "MetaVariable_method_id" .
+
+gap:MetaVariable_pref_name a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_pref_name" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariable_pref_name" .
+
+gap:MetaVariable_submitter_id a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_submitter_id" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "MetaVariable_submitter_id" .
+
+gap:MetaVariable_vocab_name a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_vocab_name" ;
+    dc:description "Term used at the metavariable source." ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariable_vocab_name" .
+
+gap:MetaVariable_vocab_source a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaVariable_vocab_source" ;
+    rdfs:domain gap:MetaVariable ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaVariable_vocab_source" .
+
+gap:Nonulls_cases a owl:DatatypeProperty ;
+    rdfs:label "GAP Nonulls_cases" ;
+    rdfs:domain gap:Nonulls ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Nonulls_cases" .
+
+gap:Nonulls_controls a owl:DatatypeProperty ;
+    rdfs:label "GAP Nonulls_controls" ;
+    rdfs:domain gap:Nonulls ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Nonulls_controls" .
+
+gap:Nonulls_females a owl:DatatypeProperty ;
+    rdfs:label "GAP Nonulls_females" ;
+    rdfs:domain gap:Nonulls ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Nonulls_females" .
+
+gap:Nonulls_males a owl:DatatypeProperty ;
+    rdfs:label "GAP Nonulls_males" ;
+    rdfs:domain gap:Nonulls ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Nonulls_males" .
+
+gap:Nonulls_total a owl:DatatypeProperty ;
+    rdfs:label "GAP Nonulls_total" ;
+    rdfs:domain gap:Nonulls ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Nonulls_total" .
+
+gap:ParticipantSet_IrbRequired_No a _:N834b72787496438b8da05816aaaa8f5f,
+        owl:NamedIndividual ;
+    owl:hasValue "No" .
+
+gap:ParticipantSet_IrbRequired_Yes a _:N834b72787496438b8da05816aaaa8f5f,
+        owl:NamedIndividual ;
+    owl:hasValue "Yes" .
+
+gap:ParticipantSet_IrbRequired_no a _:N834b72787496438b8da05816aaaa8f5f,
+        owl:NamedIndividual ;
+    owl:hasValue "no" .
+
+gap:ParticipantSet_IrbRequired_yes a _:N834b72787496438b8da05816aaaa8f5f,
+        owl:NamedIndividual ;
+    owl:hasValue "yes" .
+
+gap:ParticipantSet_groupNum-REF a owl:DatatypeProperty ;
+    rdfs:label "GAP ParticipantSet_groupNum-REF" ;
+    rdfs:domain gap:ParticipantSet ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "ParticipantSet_groupNum-REF" .
+
+gap:Pdf424Component_FileName a owl:DatatypeProperty ;
+    rdfs:label "GAP Pdf424Component_FileName" ;
+    rdfs:domain gap:Pdf424Component ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Pdf424Component_FileName" .
+
+gap:Pdf424Component_FilePath a owl:DatatypeProperty ;
+    rdfs:label "GAP Pdf424Component_FilePath" ;
+    rdfs:domain gap:Pdf424Component ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Pdf424Component_FilePath" .
+
+gap:Pdf424Component_Label a owl:DatatypeProperty ;
+    rdfs:label "GAP Pdf424Component_Label" ;
+    rdfs:domain gap:Pdf424Component ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Pdf424Component_Label" .
+
+gap:PerSNPproperties_fieldName a owl:DatatypeProperty ;
+    rdfs:label "GAP PerSNPproperties_fieldName" ;
+    rdfs:domain gap:PerSNPproperties ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "PerSNPproperties_fieldName" .
+
+gap:PerSNPproperties_type a owl:DatatypeProperty ;
+    rdfs:label "GAP PerSNPproperties_type" ;
+    rdfs:domain gap:PerSNPproperties ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "PerSNPproperties_type" .
+
+gap:Policy_DataSecurityPlanReqired_no a _:Nd89b7b2fd0104bb39540aeeff069f9f5,
+        owl:NamedIndividual ;
+    owl:hasValue "no" .
+
+gap:Policy_DataSecurityPlanReqired_yes a _:Nd89b7b2fd0104bb39540aeeff069f9f5,
+        owl:NamedIndividual ;
+    owl:hasValue "yes" .
+
+gap:Policy_DisplayPublicSummary_no a _:Ndd1fecaeb25a40d2a2baf2765d08a29b,
+        owl:NamedIndividual ;
+    owl:hasValue "no" .
+
+gap:Policy_DisplayPublicSummary_yes a _:Ndd1fecaeb25a40d2a2baf2765d08a29b,
+        owl:NamedIndividual ;
+    owl:hasValue "yes" .
+
+gap:Policy_DisplayResearchStatement_no a _:Nfe3ea9f73e3a48bdb7e951334c112792,
+        owl:NamedIndividual ;
+    owl:hasValue "no" .
+
+gap:Policy_DisplayResearchStatement_yes a _:Nfe3ea9f73e3a48bdb7e951334c112792,
+        owl:NamedIndividual ;
+    owl:hasValue "yes" .
+
+gap:Policy_PdfSupplementReqired_no a _:Nce6eacf8d3a7487e8d5cc40b8882402b,
+        owl:NamedIndividual ;
+    owl:hasValue "no" .
+
+gap:Policy_PdfSupplementReqired_yes a _:Nce6eacf8d3a7487e8d5cc40b8882402b,
+        owl:NamedIndividual ;
+    owl:hasValue "yes" .
+
+gap:Policy_Policy_ID a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_Policy_ID" ;
+    dc:description "For dbGaP, the policy-id of a study is in a fomat such as phs000001.v1.p1_policy" ;
+    rdfs:domain gap:Policy ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Policy_Policy_ID" .
+
+gap:Policy_ref_ssDacId a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_ref_ssDacId" ;
+    rdfs:domain gap:Policy ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Policy_ref_ssDacId" .
+
+gap:Project_bioproject_id a owl:DatatypeProperty ;
+    rdfs:label "GAP Project_bioproject_id" ;
+    rdfs:domain gap:Project ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Project_bioproject_id" .
+
+gap:Project_entrez_uid a owl:DatatypeProperty ;
+    rdfs:label "GAP Project_entrez_uid" ;
+    rdfs:domain gap:Project ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Project_entrez_uid" .
+
+gap:Project_name a owl:DatatypeProperty ;
+    rdfs:label "GAP Project_name" ;
+    rdfs:domain gap:Project ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Project_name" .
+
+gap:Project_project_name a owl:DatatypeProperty ;
+    rdfs:label "GAP Project_project_name" ;
+    rdfs:domain gap:Project ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Project_project_name" .
+
+gap:Project_project_url a owl:DatatypeProperty ;
+    rdfs:label "GAP Project_project_url" ;
+    dc:description "External Project URL" ;
+    rdfs:domain gap:Project ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Project_project_url" .
+
+gap:Project_short_name a owl:DatatypeProperty ;
+    rdfs:label "GAP Project_short_name" ;
+    rdfs:domain gap:Project ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Project_short_name" .
+
+gap:Publication_refComment a owl:DatatypeProperty ;
+    rdfs:label "GAP Publication_refComment" ;
+    rdfs:domain gap:Publication ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Publication_refComment" .
+
+gap:Pubmed_pmid a owl:DatatypeProperty ;
+    rdfs:label "GAP Pubmed_pmid" ;
+    rdfs:domain gap:Pubmed ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Pubmed_pmid" .
+
+gap:Pubmed_pmidNotes a owl:DatatypeProperty ;
+    rdfs:label "GAP Pubmed_pmidNotes" ;
+    rdfs:domain gap:Pubmed ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Pubmed_pmidNotes" .
+
+gap:Sample_size a owl:DatatypeProperty ;
+    rdfs:label "GAP Sample_size" ;
+    rdfs:domain gap:Sample ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Sample_size" .
+
+gap:Sample_ssType a owl:DatatypeProperty ;
+    rdfs:label "GAP Sample_ssType" ;
+    rdfs:domain gap:Sample ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Sample_ssType" .
+
+gap:Stats_max a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_max" ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Stats_max" .
+
+gap:Stats_maxOccurance a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_maxOccurance" ;
+    dc:description "Maximal number of values collected for a single individual." ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Stats_maxOccurance" .
+
+gap:Stats_mean a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_mean" ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Stats_mean" .
+
+gap:Stats_median a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_median" ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Stats_median" .
+
+gap:Stats_min a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_min" ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Stats_min" .
+
+gap:Stats_nonulls a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_nonulls" ;
+    dc:description "Number of non-empty values, including valid and invalid values." ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Stats_nonulls" .
+
+gap:Stats_nulls a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_nulls" ;
+    dc:description "Number of empty values, including null strings and values with only spaces." ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Stats_nulls" .
+
+gap:Stats_stdDev a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_stdDev" ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Stats_stdDev" .
+
+gap:Stats_validValues a owl:DatatypeProperty ;
+    rdfs:label "GAP Stats_validValues" ;
+    dc:description "Number of valid values for the variable type.  For example, 20, -12 are valid values if the variable type is 'integer'.  'NA' is an invalid value.  Statistics like min, max, mean, SD are calculated based on the valid values." ;
+    rdfs:domain gap:Stats ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Stats_validValues" .
+
+gap:StudyFundingSource_description a owl:DatatypeProperty ;
+    rdfs:label "GAP StudyFundingSource_description" ;
+    rdfs:domain gap:StudyFundingSource ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "StudyFundingSource_description" .
+
+gap:StudyFundingSource_fullName a owl:DatatypeProperty ;
+    rdfs:label "GAP StudyFundingSource_fullName" ;
+    rdfs:domain gap:StudyFundingSource ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "StudyFundingSource_fullName" .
+
+gap:StudyFundingSource_shortName a owl:DatatypeProperty ;
+    rdfs:label "GAP StudyFundingSource_shortName" ;
+    rdfs:domain gap:StudyFundingSource ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "StudyFundingSource_shortName" .
+
+gap:StudyFundingSource_url a owl:DatatypeProperty ;
+    rdfs:label "GAP StudyFundingSource_url" ;
+    rdfs:domain gap:StudyFundingSource ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "StudyFundingSource_url" .
+
+gap:Study_accession a owl:DatatypeProperty ;
+    rdfs:label "GAP Study_accession" ;
+    dc:description "Study accession" ;
+    rdfs:domain gap:Study ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Study_accession" .
+
+gap:Study_createDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Study_createDate" ;
+    rdfs:domain gap:Study ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Study_createDate" .
+
+gap:Study_modDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Study_modDate" ;
+    rdfs:domain gap:Study ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Study_modDate" .
+
+gap:Study_parentStudy a owl:DatatypeProperty ;
+    rdfs:label "GAP Study_parentStudy" ;
+    dc:description "Accession of the parent study" ;
+    rdfs:domain gap:Study ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Study_parentStudy" .
+
+gap:Study_source a owl:DatatypeProperty ;
+    rdfs:label "GAP Study_source" ;
+    dc:description "Source of the data, e.g., dbGaP, EGA" ;
+    rdfs:domain gap:Study ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Study_source" .
+
+gap:Study_uId a owl:DatatypeProperty ;
+    rdfs:label "GAP Study_uId" ;
+    rdfs:domain gap:Study ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Study_uId" .
+
+gap:Submitter_email a owl:DatatypeProperty ;
+    rdfs:label "GAP Submitter_email" ;
+    rdfs:domain gap:Submitter ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Submitter_email" .
+
+gap:Submitter_id a owl:DatatypeProperty ;
+    rdfs:label "GAP Submitter_id" ;
+    rdfs:domain gap:Submitter ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Submitter_id" .
+
+gap:Submitter_institute a owl:DatatypeProperty ;
+    rdfs:label "GAP Submitter_institute" ;
+    rdfs:domain gap:Submitter ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Submitter_institute" .
+
+gap:Submitter_name a owl:DatatypeProperty ;
+    rdfs:label "GAP Submitter_name" ;
+    rdfs:domain gap:Submitter ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Submitter_name" .
+
+gap:Summary_caseControl a owl:DatatypeProperty ;
+    rdfs:label "GAP Summary_caseControl" ;
+    rdfs:domain gap:Summary ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Summary_caseControl" .
+
+gap:Summary_consentGroup a owl:DatatypeProperty ;
+    rdfs:label "GAP Summary_consentGroup" ;
+    dc:description "The short name of the consent group like 'GRU'.  'All' represents all consent groups." ;
+    rdfs:domain gap:Summary ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Summary_consentGroup" .
+
+gap:Summary_createDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Summary_createDate" ;
+    rdfs:domain gap:Summary ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Summary_createDate" .
+
+gap:Summary_modDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Summary_modDate" ;
+    rdfs:domain gap:Summary ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Summary_modDate" .
+
+gap:Summary_submitted a owl:DatatypeProperty ;
+    rdfs:label "GAP Summary_submitted" ;
+    dc:description "Whether the summaries are directly submitted to dbGaP by submitters." ;
+    rdfs:domain gap:Summary ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "Summary_submitted" .
+
+gap:Url_name a owl:DatatypeProperty ;
+    rdfs:label "GAP Url_name" ;
+    rdfs:domain gap:Url ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Url_name" .
+
+gap:Url_url a owl:DatatypeProperty ;
+    rdfs:label "GAP Url_url" ;
+    rdfs:domain gap:Url ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Url_url" .
+
+gap:ValueCode_code a owl:DatatypeProperty ;
+    rdfs:label "GAP ValueCode_code" ;
+    rdfs:domain gap:ValueCode ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "ValueCode_code" .
+
+gap:ValueCode_meaning a owl:DatatypeProperty ;
+    rdfs:label "GAP ValueCode_meaning" ;
+    rdfs:domain gap:ValueCode ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "ValueCode_meaning" .
+
+gap:Variable_createDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Variable_createDate" ;
+    rdfs:domain gap:Variable ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Variable_createDate" .
+
+gap:Variable_modDate a owl:DatatypeProperty ;
+    rdfs:label "GAP Variable_modDate" ;
+    rdfs:domain gap:Variable ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "Variable_modDate" .
+
+gap:Variable_name a owl:DatatypeProperty ;
+    rdfs:label "GAP Variable_name" ;
+    rdfs:domain gap:Variable ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "Variable_name" .
+
+gap:Variable_uId a owl:DatatypeProperty ;
+    rdfs:label "GAP Variable_uId" ;
+    rdfs:domain gap:Variable ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Variable_uId" .
+
+gap:phvRef_variableId a owl:DatatypeProperty ;
+    rdfs:label "GAP phvRef_variableId" ;
+    rdfs:domain gap:phvRef ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "phvRef_variableId" .
+
+gap:Accession_GenotypeDataset a owl:ObjectProperty ;
+    rdfs:label "GAP Accession_GenotypeDataset" ;
+    rdfs:domain gap:Accession_GenotypeDataset ;
+    rdfs:range gap:GenotypeDataset ;
+    skos:prefLabel "Accession_GenotypeDataset" .
+
+gap:AcknowledgementText rdfs:label "GAP AcknowledgementText" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:AcknowledgementText_para ] ;
+    skos:prefLabel "AcknowledgementText" .
+
+gap:AcknowledgementText_para a owl:DatatypeProperty ;
+    rdfs:label "GAP AcknowledgementText_para" ;
+    rdfs:domain gap:AcknowledgementText_para ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "AcknowledgementText_para" .
+
+gap:Analyses rdfs:label "GAP Analyses" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:Analysis ;
+            owl:onClass gap:Analysis ;
+            owl:onProperty gap:Analyses_Analysis ] ;
+    skos:prefLabel "Analyses" .
+
+gap:Analyses_Analysis a owl:ObjectProperty ;
+    rdfs:label "GAP Analyses_Analysis" ;
+    rdfs:domain gap:Analyses_Analysis ;
+    rdfs:range gap:Analysis ;
+    skos:prefLabel "Analyses_Analysis" .
+
+gap:Analysis_CoVariate a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_CoVariate" ;
+    rdfs:domain gap:Analysis_CoVariate ;
+    rdfs:range gap:CoVariate ;
+    skos:prefLabel "Analysis_CoVariate" .
+
+gap:Analysis_Comment a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_Comment" ;
+    rdfs:domain gap:Analysis_Comment ;
+    rdfs:range gap:Comment ;
+    skos:prefLabel "Analysis_Comment" .
+
+gap:Analysis_Description a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_Description" ;
+    rdfs:domain gap:Analysis_Description ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Analysis_Description" .
+
+gap:Analysis_GtyPlatform a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_GtyPlatform" ;
+    rdfs:domain gap:Analysis_GtyPlatform ;
+    rdfs:range gap:GtyPlatform ;
+    skos:prefLabel "Analysis_GtyPlatform" .
+
+gap:Analysis_Method a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_Method" ;
+    rdfs:domain gap:Analysis_Method ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Analysis_Method" .
+
+gap:Analysis_PerSNPproperties a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_PerSNPproperties" ;
+    dc:description "Analysis summary statistics by each snp" ;
+    rdfs:domain gap:Analysis_PerSNPproperties ;
+    rdfs:range gap:PerSNPproperties ;
+    skos:prefLabel "Analysis_PerSNPproperties" .
+
+gap:Analysis_Sample a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_Sample" ;
+    rdfs:domain gap:Analysis_Sample ;
+    rdfs:range gap:Sample ;
+    skos:prefLabel "Analysis_Sample" .
+
+gap:Analysis_Variable a owl:ObjectProperty ;
+    rdfs:label "GAP Analysis_Variable" ;
+    rdfs:domain gap:Analysis_Variable ;
+    rdfs:range gap:Variable ;
+    skos:prefLabel "Analysis_Variable" .
+
+gap:Annotations_DocumentPart a owl:ObjectProperty ;
+    rdfs:label "GAP Annotations_DocumentPart" ;
+    rdfs:domain gap:Annotations_DocumentPart ;
+    rdfs:range gap:DocumentPart ;
+    skos:prefLabel "Annotations_DocumentPart" .
+
+gap:Attributions rdfs:label "GAP Attributions" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Header ;
+            owl:onProperty gap:Attributions_Header ] ;
+    skos:prefLabel "Attributions" .
+
+gap:Attributions_Header a owl:ObjectProperty ;
+    rdfs:label "GAP Attributions_Header" ;
+    rdfs:domain gap:Attributions_Header ;
+    rdfs:range gap:Header ;
+    skos:prefLabel "Attributions_Header" .
+
+gap:AuthorizedAccess rdfs:label "GAP AuthorizedAccess" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:ConsentGroups ;
+            owl:onProperty gap:AuthorizedAccess_ConsentGroups ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:DacInfo ;
+            owl:onProperty gap:AuthorizedAccess_DacInfo ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Policy ;
+            owl:onProperty gap:AuthorizedAccess_Policy ] ;
+    skos:prefLabel "AuthorizedAccess" .
+
+gap:AuthorizedAccess_ConsentGroups a owl:ObjectProperty ;
+    rdfs:label "GAP AuthorizedAccess_ConsentGroups" ;
+    rdfs:domain gap:AuthorizedAccess_ConsentGroups ;
+    rdfs:range gap:ConsentGroups ;
+    skos:prefLabel "AuthorizedAccess_ConsentGroups" .
+
+gap:AuthorizedAccess_DacInfo a owl:ObjectProperty ;
+    rdfs:label "GAP AuthorizedAccess_DacInfo" ;
+    rdfs:domain gap:AuthorizedAccess_DacInfo ;
+    rdfs:range gap:DacInfo ;
+    skos:prefLabel "AuthorizedAccess_DacInfo" .
+
+gap:AuthorizedAccess_Policy a owl:ObjectProperty ;
+    rdfs:label "GAP AuthorizedAccess_Policy" ;
+    rdfs:domain gap:AuthorizedAccess_Policy ;
+    rdfs:range gap:Policy ;
+    skos:prefLabel "AuthorizedAccess_Policy" .
+
+gap:Configuration rdfs:label "GAP Configuration" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Configuration_StudyInEx ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Configuration_StudyHistory ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Diseases ;
+            owl:onProperty gap:Configuration_Diseases ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Configuration_StudyNameReportPage ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:StudyProjects ;
+            owl:onProperty gap:Configuration_StudyProjects ],
+        _:N403b9dcf3a704de08bf418e095b63707,
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Attributions ;
+            owl:onProperty gap:Configuration_Attributions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:ConsentGroups ;
+            owl:onClass gap:ConsentGroups ;
+            owl:onProperty gap:Configuration_ConsentGroups ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Configuration_Data_Provider ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:StudyFundingSource ;
+            owl:onClass gap:StudyFundingSource ;
+            owl:onProperty gap:Configuration_StudyFundingSource ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Publications ;
+            owl:onProperty gap:Configuration_Publications ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Configuration_Description ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:TraitCategory ;
+            owl:onProperty gap:Configuration_TraitCategory ],
+        _:Nb60ae8ef3c894e47bcd1921159bdfbfd,
+        [ a owl:Restriction ;
+            owl:onClass gap:StudyTypes ;
+            owl:onProperty gap:Configuration_StudyTypes ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:StudyURLs ;
+            owl:onClass gap:StudyURLs ;
+            owl:onProperty gap:Configuration_StudyURLs ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Configuration_StudyNameEntrez ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "Configuration" .
+
+gap:Configuration_Attributions a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_Attributions" ;
+    rdfs:domain gap:Configuration_Attributions ;
+    rdfs:range gap:Attributions ;
+    skos:prefLabel "Configuration_Attributions" .
+
+gap:Configuration_ConsentGroups a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_ConsentGroups" ;
+    rdfs:domain gap:Configuration_ConsentGroups ;
+    rdfs:range gap:ConsentGroups ;
+    skos:prefLabel "Configuration_ConsentGroups" .
+
+gap:Configuration_Data_Provider a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_Data_Provider" ;
+    dc:description "Data provider" ;
+    rdfs:domain gap:Configuration_Data_Provider ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Configuration_Data_Provider" .
+
+gap:Configuration_Description a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_Description" ;
+    dc:description "Submitter Supplied study description" ;
+    rdfs:domain gap:Configuration_Description ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Configuration_Description" .
+
+gap:Configuration_Diseases a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_Diseases" ;
+    rdfs:domain gap:Configuration_Diseases ;
+    rdfs:range gap:Diseases ;
+    skos:prefLabel "Configuration_Diseases" .
+
+gap:Configuration_DisplayPublicSummary a owl:DatatypeProperty ;
+    rdfs:label "GAP Configuration_DisplayPublicSummary" ;
+    dc:description "yes/no indicator as to whether the public summary statements that apply for these data will be publicly displayed in dbGaP." ;
+    rdfs:domain gap:Configuration_DisplayPublicSummary ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Configuration_DisplayPublicSummary" .
+
+gap:Configuration_DisplayResearchStatement a owl:DatatypeProperty ;
+    rdfs:label "GAP Configuration_DisplayResearchStatement" ;
+    dc:description "yes/no indicator as to whether the research-statements that apply for these data will be publicly displayed in dbGaP." ;
+    rdfs:domain gap:Configuration_DisplayResearchStatement ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Configuration_DisplayResearchStatement" .
+
+gap:Configuration_Publications a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_Publications" ;
+    rdfs:domain gap:Configuration_Publications ;
+    rdfs:range gap:Publications ;
+    skos:prefLabel "Configuration_Publications" .
+
+gap:Configuration_StudyFundingSource a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyFundingSource" ;
+    rdfs:domain gap:Configuration_StudyFundingSource ;
+    rdfs:range gap:StudyFundingSource ;
+    skos:prefLabel "Configuration_StudyFundingSource" .
+
+gap:Configuration_StudyHistory a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyHistory" ;
+    rdfs:domain gap:Configuration_StudyHistory ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Configuration_StudyHistory" .
+
+gap:Configuration_StudyInEx a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyInEx" ;
+    dc:description "Submitter supplied study participant inclusion-exclusion criteria" ;
+    rdfs:domain gap:Configuration_StudyInEx ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Configuration_StudyInEx" .
+
+gap:Configuration_StudyNameEntrez a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyNameEntrez" ;
+    dc:description "Study name displayed on dbGaP Entrez page, usually shorter than the name on study report page." ;
+    rdfs:domain gap:Configuration_StudyNameEntrez ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Configuration_StudyNameEntrez" .
+
+gap:Configuration_StudyNameReportPage a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyNameReportPage" ;
+    dc:description "Study name displayed on dbGaP study report page." ;
+    rdfs:domain gap:Configuration_StudyNameReportPage ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Configuration_StudyNameReportPage" .
+
+gap:Configuration_StudyProjects a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyProjects" ;
+    rdfs:domain gap:Configuration_StudyProjects ;
+    rdfs:range gap:StudyProjects ;
+    skos:prefLabel "Configuration_StudyProjects" .
+
+gap:Configuration_StudyTypes a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyTypes" ;
+    dc:description "Multiple StudyTypes for one study is allowed" ;
+    rdfs:domain gap:Configuration_StudyTypes ;
+    rdfs:range gap:StudyTypes ;
+    skos:prefLabel "Configuration_StudyTypes" .
+
+gap:Configuration_StudyURLs a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_StudyURLs" ;
+    rdfs:domain gap:Configuration_StudyURLs ;
+    rdfs:range gap:StudyURLs ;
+    skos:prefLabel "Configuration_StudyURLs" .
+
+gap:Configuration_TraitCategory a owl:ObjectProperty ;
+    rdfs:label "GAP Configuration_TraitCategory" ;
+    rdfs:domain gap:Configuration_TraitCategory ;
+    rdfs:range gap:TraitCategory ;
+    skos:prefLabel "Configuration_TraitCategory" .
+
+gap:ConsentGroups_ConsentGroup a owl:ObjectProperty ;
+    rdfs:label "GAP ConsentGroups_ConsentGroup" ;
+    dc:description "A subject only belongs to one consent group. For example, a subject can consent to either 'General Research Use (GRU)' or 'Non-Profit Use Only (NPU)', but not both. Data of both GRU and NPU subjects will be made available to non-profit researchers." ;
+    rdfs:domain gap:ConsentGroups_ConsentGroup ;
+    rdfs:range gap:ConsentGroup ;
+    skos:prefLabel "ConsentGroups_ConsentGroup" .
+
+gap:ConsentGroups_ParticipantSet a owl:ObjectProperty ;
+    rdfs:label "GAP ConsentGroups_ParticipantSet" ;
+    rdfs:domain gap:ConsentGroups_ParticipantSet ;
+    rdfs:range gap:ParticipantSet ;
+    skos:prefLabel "ConsentGroups_ParticipantSet" .
+
+gap:DacInfo_DacEmail a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_DacEmail" ;
+    rdfs:domain gap:DacInfo_DacEmail ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DacInfo_DacEmail" .
+
+gap:DacInfo_DacFax a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_DacFax" ;
+    rdfs:domain gap:DacInfo_DacFax ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DacInfo_DacFax" .
+
+gap:DacInfo_DacFullName a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_DacFullName" ;
+    rdfs:domain gap:DacInfo_DacFullName ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DacInfo_DacFullName" .
+
+gap:DacInfo_DacName a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_DacName" ;
+    rdfs:domain gap:DacInfo_DacName ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DacInfo_DacName" .
+
+gap:DacInfo_DacPhone a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_DacPhone" ;
+    dc:description "Set nillable to true because there is no phone number available for dbGaP DACs." ;
+    rdfs:domain gap:DacInfo_DacPhone ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DacInfo_DacPhone" .
+
+gap:DacInfo_DacUrgentEmail a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_DacUrgentEmail" ;
+    rdfs:domain gap:DacInfo_DacUrgentEmail ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "DacInfo_DacUrgentEmail" .
+
+gap:DacInfo_DacUrl a owl:DatatypeProperty ;
+    rdfs:label "GAP DacInfo_DacUrl" ;
+    dc:description "For dbGaP, DacUrl points to policyUrl in aa-study-config." ;
+    rdfs:domain gap:DacInfo_DacUrl ;
+    rdfs:range xsd:anyURI ;
+    skos:prefLabel "DacInfo_DacUrl" .
+
+gap:DataSet_Comment a owl:ObjectProperty ;
+    rdfs:label "GAP DataSet_Comment" ;
+    rdfs:domain gap:DataSet_Comment ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "DataSet_Comment" .
+
+gap:DataSet_DatasetProjects a owl:ObjectProperty ;
+    rdfs:label "GAP DataSet_DatasetProjects" ;
+    rdfs:domain gap:DataSet_DatasetProjects ;
+    rdfs:range gap:DatasetProjects ;
+    skos:prefLabel "DataSet_DatasetProjects" .
+
+gap:DataSet_Description a owl:ObjectProperty ;
+    rdfs:label "GAP DataSet_Description" ;
+    dc:description "Submitter Supplied Document description" ;
+    rdfs:domain gap:DataSet_Description ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "DataSet_Description" .
+
+gap:DataSet_DisplayName a owl:ObjectProperty ;
+    rdfs:label "GAP DataSet_DisplayName" ;
+    dc:description "Dataset name displayed on the dataset report page." ;
+    rdfs:domain gap:DataSet_DisplayName ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "DataSet_DisplayName" .
+
+gap:DataSet_OrigName a owl:ObjectProperty ;
+    rdfs:label "GAP DataSet_OrigName" ;
+    dc:description "Original file name submitted to dbGaP." ;
+    rdfs:domain gap:DataSet_OrigName ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "DataSet_OrigName" .
+
+gap:DataSet_Variables a owl:ObjectProperty ;
+    rdfs:label "GAP DataSet_Variables" ;
+    rdfs:domain gap:DataSet_Variables ;
+    rdfs:range gap:Variables ;
+    skos:prefLabel "DataSet_Variables" .
+
+gap:DatasetProjects rdfs:label "GAP DatasetProjects" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Project ;
+            owl:onProperty gap:DatasetProjects_Project ] ;
+    skos:prefLabel "DatasetProjects" .
+
+gap:DatasetProjects_Project a owl:ObjectProperty ;
+    rdfs:label "GAP DatasetProjects_Project" ;
+    dc:description "Project" ;
+    rdfs:domain gap:DatasetProjects_Project ;
+    rdfs:range gap:Project ;
+    skos:prefLabel "DatasetProjects_Project" .
+
+gap:Datasets rdfs:label "GAP Datasets" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:DataSet ;
+            owl:onProperty gap:Datasets_Dataset ] ;
+    skos:prefLabel "Datasets" .
+
+gap:Datasets_Dataset a owl:ObjectProperty ;
+    rdfs:label "GAP Datasets_Dataset" ;
+    rdfs:domain gap:Datasets_Dataset ;
+    rdfs:range gap:DataSet ;
+    skos:prefLabel "Datasets_Dataset" .
+
+gap:Diseases rdfs:label "GAP Diseases" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Disease ;
+            owl:onProperty gap:Diseases_Disease ] ;
+    skos:prefLabel "Diseases" .
+
+gap:Diseases_Disease a owl:ObjectProperty ;
+    rdfs:label "GAP Diseases_Disease" ;
+    rdfs:domain gap:Diseases_Disease ;
+    rdfs:range gap:Disease ;
+    skos:prefLabel "Diseases_Disease" .
+
+gap:DocumentPart_phvList a owl:ObjectProperty ;
+    rdfs:label "GAP DocumentPart_phvList" ;
+    rdfs:domain gap:DocumentPart_phvList ;
+    rdfs:range gap:phvList ;
+    skos:prefLabel "DocumentPart_phvList" .
+
+gap:DocumentSet rdfs:label "GAP DocumentSet" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:Pdf424Component ;
+            owl:onClass gap:Pdf424Component ;
+            owl:onProperty gap:DocumentSet_Pdf424Component ],
+        [ a owl:Restriction ;
+            owl:onClass gap:DataUseCertificate ;
+            owl:onProperty gap:DocumentSet_DataUseCertificate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "DocumentSet" .
+
+gap:DocumentSet_DataUseCertificate a owl:ObjectProperty ;
+    rdfs:label "GAP DocumentSet_DataUseCertificate" ;
+    rdfs:domain gap:DocumentSet_DataUseCertificate ;
+    rdfs:range gap:DataUseCertificate ;
+    skos:prefLabel "DocumentSet_DataUseCertificate" .
+
+gap:DocumentSet_Pdf424Component a owl:ObjectProperty ;
+    rdfs:label "GAP DocumentSet_Pdf424Component" ;
+    rdfs:domain gap:DocumentSet_Pdf424Component ;
+    rdfs:range gap:Pdf424Component ;
+    skos:prefLabel "DocumentSet_Pdf424Component" .
+
+gap:Document_Description a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_Description" ;
+    dc:description "Submitter Supplied Document description" ;
+    rdfs:domain gap:Document_Description ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Document_Description" .
+
+gap:Document_DisplayName a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_DisplayName" ;
+    rdfs:domain gap:Document_DisplayName ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Document_DisplayName" .
+
+gap:Document_OrigName a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_OrigName" ;
+    rdfs:domain gap:Document_OrigName ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Document_OrigName" .
+
+gap:Document_displayStatus a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_displayStatus" ;
+    dc:description "Document displayed on the public website or not. The status corresponding to the \"display\" field value of StudyDocument table." ;
+    rdfs:domain gap:Document_displayStatus ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Document_displayStatus" .
+
+gap:Document_xmlStatus a owl:DatatypeProperty ;
+    rdfs:label "GAP Document_xmlStatus" ;
+    dc:description "Document XML availability. The status corresponding to the \"display_xml\" field value of StudyDocument table." ;
+    rdfs:domain gap:Document_xmlStatus ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Document_xmlStatus" .
+
+gap:Documents rdfs:label "GAP Documents" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Document ;
+            owl:onProperty gap:Documents_Document ] ;
+    skos:prefLabel "Documents" .
+
+gap:Documents_Document a owl:ObjectProperty ;
+    rdfs:label "GAP Documents_Document" ;
+    rdfs:domain gap:Documents_Document ;
+    rdfs:range gap:Document ;
+    skos:prefLabel "Documents_Document" .
+
+gap:GaPExchange_MetaLinks a owl:ObjectProperty ;
+    rdfs:label "GAP GaPExchange_MetaLinks" ;
+    rdfs:domain gap:GaPExchange_MetaLinks ;
+    rdfs:range gap:MetaLinks ;
+    skos:prefLabel "GaPExchange_MetaLinks" .
+
+gap:GaPExchange_MetaVariables a owl:ObjectProperty ;
+    rdfs:label "GAP GaPExchange_MetaVariables" ;
+    rdfs:domain gap:GaPExchange_MetaVariables ;
+    rdfs:range gap:MetaVariables ;
+    skos:prefLabel "GaPExchange_MetaVariables" .
+
+gap:GaPExchange_Projects a owl:ObjectProperty ;
+    rdfs:label "GAP GaPExchange_Projects" ;
+    rdfs:domain gap:GaPExchange_Projects ;
+    rdfs:range gap:Projects ;
+    skos:prefLabel "GaPExchange_Projects" .
+
+gap:GaPExchange_Studies a owl:ObjectProperty ;
+    rdfs:label "GAP GaPExchange_Studies" ;
+    rdfs:domain gap:GaPExchange_Studies ;
+    rdfs:range gap:Studies ;
+    skos:prefLabel "GaPExchange_Studies" .
+
+gap:GenotypeDatasets rdfs:label "GAP GenotypeDatasets" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Accession ;
+            owl:onProperty gap:GenotypeDatasets_Accession ] ;
+    skos:prefLabel "GenotypeDatasets" .
+
+gap:GenotypeDatasets_Accession a owl:ObjectProperty ;
+    rdfs:label "GAP GenotypeDatasets_Accession" ;
+    rdfs:domain gap:GenotypeDatasets_Accession ;
+    rdfs:range gap:Accession ;
+    skos:prefLabel "GenotypeDatasets_Accession" .
+
+gap:GtyPlatform_Comment a owl:ObjectProperty ;
+    rdfs:label "GAP GtyPlatform_Comment" ;
+    rdfs:domain gap:GtyPlatform_Comment ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "GtyPlatform_Comment" .
+
+gap:GtyPlatform_Platform a owl:ObjectProperty ;
+    rdfs:label "GAP GtyPlatform_Platform" ;
+    rdfs:domain gap:GtyPlatform_Platform ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "GtyPlatform_Platform" .
+
+gap:GtyPlatform_Vendor a owl:ObjectProperty ;
+    rdfs:label "GAP GtyPlatform_Vendor" ;
+    rdfs:domain gap:GtyPlatform_Vendor ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "GtyPlatform_Vendor" .
+
+gap:GtyPlatform_VendorURL a owl:ObjectProperty ;
+    rdfs:label "GAP GtyPlatform_VendorURL" ;
+    rdfs:domain gap:GtyPlatform_VendorURL ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "GtyPlatform_VendorURL" .
+
+gap:Header_AttName a owl:ObjectProperty ;
+    rdfs:label "GAP Header_AttName" ;
+    rdfs:domain gap:Header_AttName ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Header_AttName" .
+
+gap:Header_Institution a owl:ObjectProperty ;
+    rdfs:label "GAP Header_Institution" ;
+    rdfs:domain gap:Header_Institution ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Header_Institution" .
+
+gap:MetaLinks rdfs:label "GAP MetaLinks" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:MetaLink ;
+            owl:onClass gap:MetaLink ;
+            owl:onProperty gap:MetaLinks_MetaLink ] ;
+    skos:prefLabel "MetaLinks" .
+
+gap:MetaLinks_MetaLink a owl:ObjectProperty ;
+    rdfs:label "GAP MetaLinks_MetaLink" ;
+    dc:description "Links a variable to a metavariable" ;
+    rdfs:domain gap:MetaLinks_MetaLink ;
+    rdfs:range gap:MetaLink ;
+    skos:prefLabel "MetaLinks_MetaLink" .
+
+gap:MetaVariables rdfs:label "GAP MetaVariables" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Submitter ;
+            owl:onProperty gap:MetaVariables_Submitter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:MetaVariable ;
+            owl:onClass gap:MetaVariable ;
+            owl:onProperty gap:MetaVariables_MetaVariable ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:MetaVariableMethod ;
+            owl:onProperty gap:MetaVariables_Method ] ;
+    skos:prefLabel "MetaVariables" .
+
+gap:MetaVariables_MetaVariable a owl:ObjectProperty ;
+    rdfs:label "GAP MetaVariables_MetaVariable" ;
+    rdfs:domain gap:MetaVariables_MetaVariable ;
+    rdfs:range gap:MetaVariable ;
+    skos:prefLabel "MetaVariables_MetaVariable" .
+
+gap:MetaVariables_Method a owl:ObjectProperty ;
+    rdfs:label "GAP MetaVariables_Method" ;
+    rdfs:domain gap:MetaVariables_Method ;
+    rdfs:range gap:MetaVariableMethod ;
+    skos:prefLabel "MetaVariables_Method" .
+
+gap:MetaVariables_Submitter a owl:ObjectProperty ;
+    rdfs:label "GAP MetaVariables_Submitter" ;
+    rdfs:domain gap:MetaVariables_Submitter ;
+    rdfs:range gap:Submitter ;
+    skos:prefLabel "MetaVariables_Submitter" .
+
+gap:ParticipantSet_ConsentAbbrev a owl:DatatypeProperty ;
+    rdfs:label "GAP ParticipantSet_ConsentAbbrev" ;
+    rdfs:domain gap:ParticipantSet_ConsentAbbrev ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "ParticipantSet_ConsentAbbrev" .
+
+gap:ParticipantSet_ConsentName a owl:DatatypeProperty ;
+    rdfs:label "GAP ParticipantSet_ConsentName" ;
+    rdfs:domain gap:ParticipantSet_ConsentName ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "ParticipantSet_ConsentName" .
+
+gap:ParticipantSet_IrbRequired a owl:DatatypeProperty ;
+    rdfs:label "GAP ParticipantSet_IrbRequired" ;
+    rdfs:domain gap:ParticipantSet_IrbRequired ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "ParticipantSet_IrbRequired" .
+
+gap:ParticipantSet_UseLimitation a owl:DatatypeProperty ;
+    rdfs:label "GAP ParticipantSet_UseLimitation" ;
+    rdfs:domain gap:ParticipantSet_UseLimitation ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "ParticipantSet_UseLimitation" .
+
+gap:Policy_AcknowledgementText a owl:ObjectProperty ;
+    rdfs:label "GAP Policy_AcknowledgementText" ;
+    rdfs:domain gap:Policy_AcknowledgementText ;
+    rdfs:range gap:AcknowledgementText ;
+    skos:prefLabel "Policy_AcknowledgementText" .
+
+gap:Policy_DataSecurityPlanReqired a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_DataSecurityPlanReqired" ;
+    rdfs:domain gap:Policy_DataSecurityPlanReqired ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Policy_DataSecurityPlanReqired" .
+
+gap:Policy_DisplayPublicSummary a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_DisplayPublicSummary" ;
+    rdfs:domain gap:Policy_DisplayPublicSummary ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Policy_DisplayPublicSummary" .
+
+gap:Policy_DisplayResearchStatement a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_DisplayResearchStatement" ;
+    rdfs:domain gap:Policy_DisplayResearchStatement ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Policy_DisplayResearchStatement" .
+
+gap:Policy_DocumentSet a owl:ObjectProperty ;
+    rdfs:label "GAP Policy_DocumentSet" ;
+    rdfs:domain gap:Policy_DocumentSet ;
+    rdfs:range gap:DocumentSet ;
+    skos:prefLabel "Policy_DocumentSet" .
+
+gap:Policy_EmbargoLength a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_EmbargoLength" ;
+    rdfs:domain gap:Policy_EmbargoLength ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "Policy_EmbargoLength" .
+
+gap:Policy_PdfSupplementReqired a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_PdfSupplementReqired" ;
+    rdfs:domain gap:Policy_PdfSupplementReqired ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Policy_PdfSupplementReqired" .
+
+gap:Policy_WeeksCancelRequest a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_WeeksCancelRequest" ;
+    rdfs:domain gap:Policy_WeeksCancelRequest ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "Policy_WeeksCancelRequest" .
+
+gap:Policy_YearsUntilRenewal a owl:DatatypeProperty ;
+    rdfs:label "GAP Policy_YearsUntilRenewal" ;
+    rdfs:domain gap:Policy_YearsUntilRenewal ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "Policy_YearsUntilRenewal" .
+
+gap:Project_ID a owl:DatatypeProperty ;
+    rdfs:label "GAP Project_ID" ;
+    rdfs:domain gap:Project ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "Project_ID" .
+
+gap:Projects rdfs:label "GAP Projects" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:Project ;
+            owl:onClass gap:Project ;
+            owl:onProperty gap:Projects_Project ] ;
+    skos:prefLabel "Projects" .
+
+gap:Projects_Project a owl:ObjectProperty ;
+    rdfs:label "GAP Projects_Project" ;
+    dc:description "Project" ;
+    rdfs:domain gap:Projects_Project ;
+    rdfs:range gap:Project ;
+    skos:prefLabel "Projects_Project" .
+
+gap:Publication_Book a owl:ObjectProperty ;
+    rdfs:label "GAP Publication_Book" ;
+    rdfs:domain gap:Publication_Book ;
+    rdfs:range gap:Book ;
+    skos:prefLabel "Publication_Book" .
+
+gap:Publication_Journal a owl:ObjectProperty ;
+    rdfs:label "GAP Publication_Journal" ;
+    rdfs:domain gap:Publication_Journal ;
+    rdfs:range gap:Journal ;
+    skos:prefLabel "Publication_Journal" .
+
+gap:Publication_Pubmed a owl:ObjectProperty ;
+    rdfs:label "GAP Publication_Pubmed" ;
+    rdfs:domain gap:Publication_Pubmed ;
+    rdfs:range gap:Pubmed ;
+    skos:prefLabel "Publication_Pubmed" .
+
+gap:Publications rdfs:label "GAP Publications" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:Publication ;
+            owl:onClass gap:Publication ;
+            owl:onProperty gap:Publications_Publication ] ;
+    skos:prefLabel "Publications" .
+
+gap:Publications_Publication a owl:ObjectProperty ;
+    rdfs:label "GAP Publications_Publication" ;
+    rdfs:domain gap:Publications_Publication ;
+    rdfs:range gap:Publication ;
+    skos:prefLabel "Publications_Publication" .
+
+gap:Studies rdfs:label "GAP Studies" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Study ;
+            owl:onProperty gap:Studies_Study ] ;
+    skos:prefLabel "Studies" .
+
+gap:Studies_Study a owl:ObjectProperty ;
+    rdfs:label "GAP Studies_Study" ;
+    rdfs:domain gap:Studies_Study ;
+    rdfs:range gap:Study ;
+    skos:prefLabel "Studies_Study" .
+
+gap:StudyProjects rdfs:label "GAP StudyProjects" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Project ;
+            owl:onProperty gap:StudyProjects_Project ] ;
+    skos:prefLabel "StudyProjects" .
+
+gap:StudyProjects_Project a owl:ObjectProperty ;
+    rdfs:label "GAP StudyProjects_Project" ;
+    rdfs:domain gap:StudyProjects_Project ;
+    rdfs:range gap:Project ;
+    skos:prefLabel "StudyProjects_Project" .
+
+gap:StudyTypes rdfs:label "GAP StudyTypes" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:StudyTypes_StudyType ] ;
+    skos:prefLabel "StudyTypes" .
+
+gap:StudyTypes_StudyType a owl:DatatypeProperty ;
+    rdfs:label "GAP StudyTypes_StudyType" ;
+    dc:description "dbGap defined controlled list of study types" ;
+    rdfs:domain gap:StudyTypes_StudyType ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "StudyTypes_StudyType" .
+
+gap:StudyURLs_Url a owl:ObjectProperty ;
+    rdfs:label "GAP StudyURLs_Url" ;
+    rdfs:domain gap:StudyURLs_Url ;
+    rdfs:range gap:Url ;
+    skos:prefLabel "StudyURLs_Url" .
+
+gap:Study_Analyses a owl:ObjectProperty ;
+    rdfs:label "GAP Study_Analyses" ;
+    rdfs:domain gap:Study_Analyses ;
+    rdfs:range gap:Analyses ;
+    skos:prefLabel "Study_Analyses" .
+
+gap:Study_Annotations a owl:ObjectProperty ;
+    rdfs:label "GAP Study_Annotations" ;
+    dc:description "Links a section of the docText to a variable." ;
+    rdfs:domain gap:Study_Annotations ;
+    rdfs:range gap:Annotations ;
+    skos:prefLabel "Study_Annotations" .
+
+gap:Study_AuthorizedAccess a owl:ObjectProperty ;
+    rdfs:label "GAP Study_AuthorizedAccess" ;
+    rdfs:domain gap:Study_AuthorizedAccess ;
+    rdfs:range gap:AuthorizedAccess ;
+    skos:prefLabel "Study_AuthorizedAccess" .
+
+gap:Study_Configuration a owl:ObjectProperty ;
+    rdfs:label "GAP Study_Configuration" ;
+    rdfs:domain gap:Study_Configuration ;
+    rdfs:range gap:Configuration ;
+    skos:prefLabel "Study_Configuration" .
+
+gap:Study_Datasets a owl:ObjectProperty ;
+    rdfs:label "GAP Study_Datasets" ;
+    rdfs:domain gap:Study_Datasets ;
+    rdfs:range gap:Datasets ;
+    skos:prefLabel "Study_Datasets" .
+
+gap:Study_Documents a owl:ObjectProperty ;
+    rdfs:label "GAP Study_Documents" ;
+    rdfs:domain gap:Study_Documents ;
+    rdfs:range gap:Documents ;
+    skos:prefLabel "Study_Documents" .
+
+gap:Study_GenotypeDatasets a owl:ObjectProperty ;
+    rdfs:label "GAP Study_GenotypeDatasets" ;
+    rdfs:domain gap:Study_GenotypeDatasets ;
+    rdfs:range gap:GenotypeDatasets ;
+    skos:prefLabel "Study_GenotypeDatasets" .
+
+gap:Subjects rdfs:label "GAP Subjects" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass gap:Nonulls ;
+            owl:onProperty gap:Subjects_Nonulls ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Subjects_Nulls ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "Subjects" .
+
+gap:Subjects_Nonulls a owl:ObjectProperty ;
+    rdfs:label "GAP Subjects_Nonulls" ;
+    rdfs:domain gap:Subjects_Nonulls ;
+    rdfs:range gap:Nonulls ;
+    skos:prefLabel "Subjects_Nonulls" .
+
+gap:Subjects_Nulls a owl:ObjectProperty ;
+    rdfs:label "GAP Subjects_Nulls" ;
+    rdfs:domain gap:Subjects_Nulls ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Subjects_Nulls" .
+
+gap:Summary_Stats a owl:ObjectProperty ;
+    rdfs:label "GAP Summary_Stats" ;
+    dc:description "Summary of all the values of the variable.  It is possible that a subject has multiple values." ;
+    rdfs:domain gap:Summary_Stats ;
+    rdfs:range gap:Stats ;
+    skos:prefLabel "Summary_Stats" .
+
+gap:Summary_Subjects a owl:ObjectProperty ;
+    rdfs:label "GAP Summary_Subjects" ;
+    dc:description "Counts of individuals." ;
+    rdfs:domain gap:Summary_Subjects ;
+    rdfs:range gap:Subjects ;
+    skos:prefLabel "Summary_Subjects" .
+
+gap:TraitCategory rdfs:label "GAP TraitCategory" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:TraitCategory_Trait ] ;
+    skos:prefLabel "TraitCategory" .
+
+gap:TraitCategory_Trait a owl:ObjectProperty ;
+    rdfs:label "GAP TraitCategory_Trait" ;
+    rdfs:domain gap:TraitCategory_Trait ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "TraitCategory_Trait" .
+
+gap:Variable_Comment a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_Comment" ;
+    rdfs:domain gap:Variable_Comment ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_Comment" .
+
+gap:Variable_DataType a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_DataType" ;
+    dc:description "The data type of the values, e.g., integer, decimal, string, etc." ;
+    rdfs:domain gap:Variable_DataType ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_DataType" .
+
+gap:Variable_Description a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_Description" ;
+    dc:description "Submitter Supplied Variable description" ;
+    rdfs:domain gap:Variable_Description ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_Description" .
+
+gap:Variable_HipaaMax a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_HipaaMax" ;
+    dc:description "The maximal value that can be made available to the public users without breaking the HIPAA rules." ;
+    rdfs:domain gap:Variable_HipaaMax ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_HipaaMax" .
+
+gap:Variable_HipaaMin a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_HipaaMin" ;
+    dc:description "The minimal value that can be made available to the public users without breaking the HIPAA rules." ;
+    rdfs:domain gap:Variable_HipaaMin ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_HipaaMin" .
+
+gap:Variable_LogicalMax a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_LogicalMax" ;
+    dc:description "The logical upper limit of the values." ;
+    rdfs:domain gap:Variable_LogicalMax ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_LogicalMax" .
+
+gap:Variable_LogicalMin a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_LogicalMin" ;
+    dc:description "The logical lower limit of the values." ;
+    rdfs:domain gap:Variable_LogicalMin ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_LogicalMin" .
+
+gap:Variable_Summary a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_Summary" ;
+    rdfs:domain gap:Variable_Summary ;
+    rdfs:range gap:Summary ;
+    skos:prefLabel "Variable_Summary" .
+
+gap:Variable_Units a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_Units" ;
+    rdfs:domain gap:Variable_Units ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_Units" .
+
+gap:Variable_ValueCode a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_ValueCode" ;
+    rdfs:domain gap:Variable_ValueCode ;
+    rdfs:range gap:ValueCode ;
+    skos:prefLabel "Variable_ValueCode" .
+
+gap:Variable_VariableName a owl:ObjectProperty ;
+    rdfs:label "GAP Variable_VariableName" ;
+    rdfs:domain gap:Variable_VariableName ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "Variable_VariableName" .
+
+gap:Variable_accession a owl:DatatypeProperty ;
+    rdfs:label "GAP Variable_accession" ;
+    dc:description "Variable accession" ;
+    rdfs:domain gap:Variable ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "Variable_accession" .
+
+gap:Variables rdfs:label "GAP Variables" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Variable ;
+            owl:onProperty gap:Variables_Variable ] ;
+    skos:prefLabel "Variables" .
+
+gap:Variables_Variable a owl:ObjectProperty ;
+    rdfs:label "GAP Variables_Variable" ;
+    rdfs:domain gap:Variables_Variable ;
+    rdfs:range gap:Variable ;
+    skos:prefLabel "Variables_Variable" .
+
+gap:phvList rdfs:label "GAP phvList" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:phvRef ;
+            owl:onClass gap:phvRef ;
+            owl:onProperty gap:phvList_phvRef ] ;
+    skos:prefLabel "phvList" .
+
+gap:phvList_phvRef a owl:ObjectProperty ;
+    rdfs:label "GAP phvList_phvRef" ;
+    rdfs:domain gap:phvList_phvRef ;
+    rdfs:range gap:phvRef ;
+    skos:prefLabel "phvList_phvRef" .
+
+gap:Annotations rdfs:label "GAP Annotations" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:DocumentPart ;
+            owl:onClass gap:DocumentPart ;
+            owl:onProperty gap:Annotations_DocumentPart ] ;
+    skos:prefLabel "Annotations" .
+
+gap:Comment rdfs:label "GAP Comment" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Comment_type ] ;
+    skos:prefLabel "Comment" .
+
+gap:DacInfo rdfs:label "GAP DacInfo" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DacInfo_DacEmail ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DacInfo_DacPhone ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty gap:DacInfo_DacUrl ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DacInfo_DacName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DacInfo_DacFullName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DacInfo_DacUrgentEmail ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DacInfo_ssDacId ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DacInfo_DacFax ] ;
+    skos:prefLabel "DacInfo" .
+
+gap:Header rdfs:label "GAP Header" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Header_title ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Header_AttName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Header_Institution ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "Header" .
+
+gap:ParticipantSet rdfs:label "GAP ParticipantSet" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:ParticipantSet_ConsentName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty gap:ParticipantSet_groupNum-REF ],
+        _:N834b72787496438b8da05816aaaa8f5f,
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:ParticipantSet_ConsentAbbrev ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:ParticipantSet_UseLimitation ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "ParticipantSet" .
+
+gap:StudyURLs rdfs:label "GAP StudyURLs" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Url ;
+            owl:onProperty gap:StudyURLs_Url ] ;
+    skos:prefLabel "StudyURLs" .
+
+gap:Policy rdfs:label "GAP Policy" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty gap:Policy_YearsUntilRenewal ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty gap:Policy_EmbargoLength ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass gap:DocumentSet ;
+            owl:onProperty gap:Policy_DocumentSet ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty gap:Policy_WeeksCancelRequest ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Policy_ref_ssDacId ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Policy_Policy_ID ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        _:Nce6eacf8d3a7487e8d5cc40b8882402b,
+        _:Nd89b7b2fd0104bb39540aeeff069f9f5,
+        _:Ndd1fecaeb25a40d2a2baf2765d08a29b,
+        [ a owl:Restriction ;
+            owl:onClass gap:AcknowledgementText ;
+            owl:onProperty gap:Policy_AcknowledgementText ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        _:Nfe3ea9f73e3a48bdb7e951334c112792 ;
+    skos:prefLabel "Policy" .
+
+gap:Publication rdfs:label "GAP Publication" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Journal ;
+            owl:onProperty gap:Publication_Journal ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Book ;
+            owl:onProperty gap:Publication_Book ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Publication_refComment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:Pubmed ;
+            owl:onClass gap:Pubmed ;
+            owl:onProperty gap:Publication_Pubmed ] ;
+    skos:prefLabel "Publication" .
+
+gap:Url rdfs:label "GAP Url" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Url_url ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Url_name ] ;
+    skos:prefLabel "Url" .
+
+gap:phvRef rdfs:label "GAP phvRef" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty gap:phvRef_variableId ] ;
+    skos:prefLabel "phvRef" .
+
+gap:Accession rdfs:label "GAP Accession" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:GenotypeDataset ;
+            owl:onProperty gap:Accession_GenotypeDataset ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Accession_Status ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Accession_ref_Policy_Id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Accession_ID ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "Accession" .
+
+gap:CoVariate rdfs:label "GAP CoVariate" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:CoVariate_accession ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:CoVariate_name ] ;
+    skos:prefLabel "CoVariate" .
+
+gap:ConsentGroup rdfs:label "GAP ConsentGroup" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:ConsentGroup_groupNum ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:ConsentGroup_longName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:ConsentGroup_shortName ] ;
+    skos:prefLabel "ConsentGroup" .
+
+gap:ConsentGroups rdfs:label "GAP ConsentGroups" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:ConsentGroup ;
+            owl:onProperty gap:ConsentGroups_ConsentGroup ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:ParticipantSet ;
+            owl:onProperty gap:ConsentGroups_ParticipantSet ] ;
+    skos:prefLabel "ConsentGroups" .
+
+gap:DataUseCertificate rdfs:label "GAP DataUseCertificate" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DataUseCertificate_FileName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DataUseCertificate_FilePath ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DataUseCertificate_Label ] ;
+    skos:prefLabel "DataUseCertificate" .
+
+gap:Disease rdfs:label "GAP Disease" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Disease_vocab_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Disease_vocab_source ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Disease_vocab_term ] ;
+    skos:prefLabel "Disease" .
+
+gap:GtyPlatform rdfs:label "GAP GtyPlatform" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:GtyPlatform_probeNum ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:GtyPlatform_VendorURL ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:GtyPlatform_Vendor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:GtyPlatform_Comment ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:GtyPlatform_Platform ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:GtyPlatform_snpBatchId ] ;
+    skos:prefLabel "GtyPlatform" .
+
+gap:MetaLink rdfs:label "GAP MetaLink" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:MetaLink_metavariable_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaLink_variableAccession ] ;
+    skos:prefLabel "MetaLink" .
+
+gap:MetaVariableMethod rdfs:label "GAP MetaVariableMethod" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariableMethod_comment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariableMethod_method ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:MetaVariableMethod_id ] ;
+    skos:prefLabel "MetaVariableMethod" .
+
+gap:PerSNPproperties rdfs:label "GAP PerSNPproperties" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:PerSNPproperties_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:PerSNPproperties_fieldName ] ;
+    skos:prefLabel "PerSNPproperties" .
+
+gap:Pubmed rdfs:label "GAP Pubmed" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Pubmed_pmidNotes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Pubmed_pmid ] ;
+    skos:prefLabel "Pubmed" .
+
+gap:Sample rdfs:label "GAP Sample" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Sample_size ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Sample_ssType ] ;
+    skos:prefLabel "Sample" .
+
+gap:ValueCode rdfs:label "GAP ValueCode" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:ValueCode_meaning ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:ValueCode_code ] ;
+    skos:prefLabel "ValueCode" .
+
+gap:DocumentPart rdfs:label "GAP DocumentPart" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DocumentPart_sectionId ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty gap:DocumentPart_documentUid ],
+        [ a owl:Restriction ;
+            owl:onClass gap:phvList ;
+            owl:onProperty gap:DocumentPart_phvList ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DocumentPart_phd ] ;
+    skos:prefLabel "DocumentPart" .
+
+gap:Pdf424Component rdfs:label "GAP Pdf424Component" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Pdf424Component_FileName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Pdf424Component_FilePath ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Pdf424Component_Label ] ;
+    skos:prefLabel "Pdf424Component" .
+
+gap:Submitter rdfs:label "GAP Submitter" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Submitter_email ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Submitter_institute ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Submitter_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Submitter_id ] ;
+    skos:prefLabel "Submitter" .
+
+gap:GenotypeDataset rdfs:label "GAP GenotypeDataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:GenotypeDataset_genotyping_array ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:GenotypeDataset_sample_count ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:GenotypeDataset_data_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:GenotypeDataset_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:GenotypeDataset_description ] ;
+    skos:prefLabel "GenotypeDataset" .
+
+gap:Nonulls rdfs:label "GAP Nonulls" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Nonulls_total ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Nonulls_males ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Nonulls_cases ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Nonulls_females ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Nonulls_controls ] ;
+    skos:prefLabel "Nonulls" .
+
+gap:StudyFundingSource rdfs:label "GAP StudyFundingSource" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:StudyFundingSource_description ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:StudyFundingSource_fullName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:StudyFundingSource_url ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:StudyFundingSource_shortName ] ;
+    skos:prefLabel "StudyFundingSource" .
+
+gap:Analysis rdfs:label "GAP Analysis" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Analysis_genomeBuild ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Analysis_uId ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Analysis_Description ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:PerSNPproperties ;
+            owl:onClass gap:PerSNPproperties ;
+            owl:onProperty gap:Analysis_PerSNPproperties ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Analysis_snpBuild ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Analysis_Method ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Analysis_pha ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Analysis_analysisType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:Sample ;
+            owl:onClass gap:Sample ;
+            owl:onProperty gap:Analysis_Sample ],
+        [ a owl:Restriction ;
+            owl:onClass gap:Comment ;
+            owl:onProperty gap:Analysis_Comment ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:GtyPlatform ;
+            owl:onClass gap:GtyPlatform ;
+            owl:onProperty gap:Analysis_GtyPlatform ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:CoVariate ;
+            owl:onClass gap:CoVariate ;
+            owl:onProperty gap:Analysis_CoVariate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:Variable ;
+            owl:onClass gap:Variable ;
+            owl:onProperty gap:Analysis_Variable ] ;
+    skos:prefLabel "Analysis" .
+
+gap:Study rdfs:label "GAP Study" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Analyses ;
+            owl:onProperty gap:Study_Analyses ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Study_parentStudy ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:GenotypeDatasets ;
+            owl:onProperty gap:Study_GenotypeDatasets ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Datasets ;
+            owl:onProperty gap:Study_Datasets ],
+        [ a owl:Restriction ;
+            owl:onClass gap:Configuration ;
+            owl:onProperty gap:Study_Configuration ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Study_uId ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Documents ;
+            owl:onProperty gap:Study_Documents ],
+        [ a owl:Restriction ;
+            owl:onClass gap:AuthorizedAccess ;
+            owl:onProperty gap:Study_AuthorizedAccess ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Study_accession ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Study_createDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Study_modDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:Annotations ;
+            owl:onClass gap:Annotations ;
+            owl:onProperty gap:Study_Annotations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Study_source ] ;
+    skos:prefLabel "Study" .
+
+gap:Summary rdfs:label "GAP Summary" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Summary_consentGroup ],
+        [ a owl:Restriction ;
+            owl:onClass gap:Subjects ;
+            owl:onProperty gap:Summary_Subjects ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass gap:Stats ;
+            owl:onProperty gap:Summary_Stats ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Summary_modDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Summary_createDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty gap:Summary_submitted ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Summary_caseControl ] ;
+    skos:prefLabel "Summary" .
+
+gap:Book rdfs:label "GAP Book" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Book_publisher ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Book_chapterName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Book_pubCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Book_pubYear ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Book_bookName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Book_editors ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Book_authors ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Book_notes ] ;
+    skos:prefLabel "Book" .
+
+gap:DataSet rdfs:label "GAP DataSet" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:DataSet_Comment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:DataSet_createDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty gap:DataSet_ddURI ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty gap:DataSet_longitudinal ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:DatasetProjects ;
+            owl:onProperty gap:DataSet_DatasetProjects ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:DataSet_OrigName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty gap:DataSet_simulated ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gap:Variables ;
+            owl:onProperty gap:DataSet_Variables ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:DataSet_accession ],
+        _:Nb20ea296802049d9965b5a58424efd9b,
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:DataSet_embargoReleaseDate ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:DataSet_Description ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:DataSet_DisplayName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:DataSet_modDate ] ;
+    skos:prefLabel "DataSet" .
+
+gap:Document rdfs:label "GAP Document" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty gap:Document_urlToXml ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Document_type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Document_phd ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Document_createDate ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Document_OrigName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty gap:Document_publicURI ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Document_modDate ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Document_Description ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        _:Na8be61bc8c6148e3999e244a937ac7bf,
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty gap:Document_uId ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty gap:Document_urlToHtml ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Document_DisplayName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        _:Nd68be6fe9ddc49dca3ed1ffa9fa304b5 ;
+    skos:prefLabel "Document" .
+
+gap:Variable rdfs:label "GAP Variable" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_LogicalMax ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:ValueCode ;
+            owl:onClass gap:ValueCode ;
+            owl:onProperty gap:Variable_ValueCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_Units ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_DataType ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_HipaaMin ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_HipaaMax ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gap:Summary ;
+            owl:onClass gap:Summary ;
+            owl:onProperty gap:Variable_Summary ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Variable_accession ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Variable_name ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_VariableName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_LogicalMin ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Variable_accession ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Variable_modDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:Variable_createDate ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_Description ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Variable_uId ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:Variable_Comment ] ;
+    skos:prefLabel "Variable" .
+
+gap:Journal rdfs:label "GAP Journal" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Journal_volume ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Journal_notes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Journal_title ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Journal_endpg ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Journal_journal ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Journal_startpg ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Journal_year ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Journal_authors ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Journal_journalName ] ;
+    skos:prefLabel "Journal" .
+
+gap:Stats rdfs:label "GAP Stats" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Stats_max ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Stats_nonulls ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Stats_nulls ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Stats_validValues ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Stats_mean ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Stats_maxOccurance ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Stats_median ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Stats_min ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Stats_stdDev ] ;
+    skos:prefLabel "Stats" .
+
+gap:MetaVariable rdfs:label "GAP MetaVariable" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariable_comment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariable_mapping ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariable_UMLS_CUI ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariable_vocab_source ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:MetaVariable_submitter_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariable_vocab_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:MetaVariable_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaVariable_pref_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:MetaVariable_method_id ] ;
+    skos:prefLabel "MetaVariable" .
+
+gap:Project rdfs:label "GAP Project" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Project_bioproject_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Project_ID ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Project_project_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Project_entrez_uid ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Project_short_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:Project_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:Project_project_url ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:Project_ID ] ;
+    skos:prefLabel "Project" .
+
+_:N0aa3102ed96a4ba3bf42e420ecc127f8 rdf:first gap:Policy_PdfSupplementReqired_no ;
+    rdf:rest () .
+
+_:N11088d09057043d6abe83979f8b02aa2 rdf:first gap:Policy_DisplayResearchStatement_no ;
+    rdf:rest () .
+
+_:N26208fd009f04e39a904f51dc4167e92 rdf:first gap:Configuration_DisplayPublicSummary_no ;
+    rdf:rest () .
+
+_:N2f03ae06d4a04fd98b1d15822d554284 rdf:first gap:Document_xmlStatus_unknown ;
+    rdf:rest () .
+
+_:N2f6df6f285e446808007afd055bb6396 rdf:first gap:Document_displayStatus_unknown ;
+    rdf:rest () .
+
+_:N309e4f07b23c40b29c15d209ecc241b9 rdf:first gap:Policy_DisplayPublicSummary_no ;
+    rdf:rest () .
+
+_:N316d843cbfb24d96b633446cef14820e rdf:first gap:Configuration_DisplayResearchStatement_no ;
+    rdf:rest () .
+
+_:N59c31d0ae3594d7e8cdc99d1ff80d522 rdf:first gap:Document_xmlStatus_develop ;
+    rdf:rest ( gap:Document_xmlStatus_preview gap:Document_xmlStatus_unknown ) .
+
+_:N5ba2e38621934132bea14dd85bcaa32e rdf:first gap:DataSet_subDatasetType_Pedigree ;
+    rdf:rest ( gap:DataSet_subDatasetType_Sample gap:DataSet_subDatasetType_Trace ) .
+
+_:N62da5d4fa32948e6bb7ee22ed85b42d1 rdf:first gap:Policy_PdfSupplementReqired_yes ;
+    rdf:rest _:N0aa3102ed96a4ba3bf42e420ecc127f8 .
+
+_:N734e97f5d7bb426caadc89040823572f rdf:first gap:Configuration_DisplayResearchStatement_yes ;
+    rdf:rest _:N316d843cbfb24d96b633446cef14820e .
+
+_:N7e15e745edde4a9282754ccc4efa146b rdf:first gap:ParticipantSet_IrbRequired_No ;
+    rdf:rest ( gap:ParticipantSet_IrbRequired_yes gap:ParticipantSet_IrbRequired_no ) .
+
+_:N864c7b5c7d224ec3a0e92aef54acca19 rdf:first gap:Document_displayStatus_stage-1 ;
+    rdf:rest _:N2f6df6f285e446808007afd055bb6396 .
+
+_:N96cfbaf62d4844888354ff4379bf81a7 rdf:first gap:ParticipantSet_IrbRequired_Yes ;
+    rdf:rest _:N7e15e745edde4a9282754ccc4efa146b .
+
+_:N9943c1993a4743de80d059fd3e3f963a rdf:first gap:Document_displayStatus_public ;
+    rdf:rest ( gap:Document_displayStatus_stage-2 gap:Document_displayStatus_stage-1 gap:Document_displayStatus_unknown ) .
+
+_:N9b1273ca73fe42b3b5819e68c204fb6e rdf:first gap:Document_xmlStatus_public ;
+    rdf:rest _:N59c31d0ae3594d7e8cdc99d1ff80d522 .
+
+_:Na3531c0b5285407f847f43af6abafc56 rdf:first gap:Policy_DisplayResearchStatement_yes ;
+    rdf:rest _:N11088d09057043d6abe83979f8b02aa2 .
+
+_:Naa88929177db4d29a9349f9aa3253028 rdf:first gap:DataSet_subDatasetType_Consent ;
+    rdf:rest _:N5ba2e38621934132bea14dd85bcaa32e .
+
+_:Nbbfd9425cfa043e18b644847aa9a061f rdf:first gap:Policy_DataSecurityPlanReqired_yes ;
+    rdf:rest ( gap:Policy_DataSecurityPlanReqired_no ) .
+
+_:Ncaa72fa2630542f1bc166907ff00dff0 rdf:first gap:Configuration_DisplayPublicSummary_yes ;
+    rdf:rest _:N26208fd009f04e39a904f51dc4167e92 .
+
+_:Ne7899e4111444d9a9b9af7d6234d0216 rdf:first gap:Policy_DisplayPublicSummary_yes ;
+    rdf:rest _:N309e4f07b23c40b29c15d209ecc241b9 .
+
+_:N403b9dcf3a704de08bf418e095b63707 a owl:Restriction ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Configuration_DisplayPublicSummary ;
+    owl:oneOf _:Ncaa72fa2630542f1bc166907ff00dff0 .
+
+_:Nb60ae8ef3c894e47bcd1921159bdfbfd a owl:Restriction ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Configuration_DisplayResearchStatement ;
+    owl:oneOf _:N734e97f5d7bb426caadc89040823572f .
+
+_:Nce6eacf8d3a7487e8d5cc40b8882402b a owl:Restriction ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Policy_PdfSupplementReqired ;
+    owl:oneOf _:N62da5d4fa32948e6bb7ee22ed85b42d1 .
+
+_:Nd89b7b2fd0104bb39540aeeff069f9f5 a owl:Restriction ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Policy_DataSecurityPlanReqired ;
+    owl:oneOf _:Nbbfd9425cfa043e18b644847aa9a061f .
+
+_:Ndd1fecaeb25a40d2a2baf2765d08a29b a owl:Restriction ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Policy_DisplayPublicSummary ;
+    owl:oneOf _:Ne7899e4111444d9a9b9af7d6234d0216 ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+_:Nfe3ea9f73e3a48bdb7e951334c112792 a owl:Restriction ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Policy_DisplayResearchStatement ;
+    owl:oneOf _:Na3531c0b5285407f847f43af6abafc56 ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+_:N834b72787496438b8da05816aaaa8f5f a owl:Restriction ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:ParticipantSet_IrbRequired ;
+    owl:oneOf _:N96cfbaf62d4844888354ff4379bf81a7 ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+_:Na8be61bc8c6148e3999e244a937ac7bf a owl:Restriction ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Document_xmlStatus ;
+    owl:oneOf _:N9b1273ca73fe42b3b5819e68c204fb6e ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+_:Nb20ea296802049d9965b5a58424efd9b a owl:Restriction ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:DataSet_subDatasetType ;
+    owl:oneOf _:Naa88929177db4d29a9349f9aa3253028 .
+
+_:Nd68be6fe9ddc49dca3ed1ffa9fa304b5 a owl:Restriction ;
+    owl:onDataRange xsd:string ;
+    owl:onProperty gap:Document_displayStatus ;
+    owl:oneOf _:N9943c1993a4743de80d059fd3e3f963a ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger .
+

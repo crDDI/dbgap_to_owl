@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://ncbi.nlm.nih.gov/gap/mms#" xmlns="http://ncbi.nlm.nih.gov/gap/mms#"
+           elementFormDefault="qualified">
+    <xs:element name="MetaLinks">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="MetaLink" maxOccurs="unbounded" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Links a variable to a metavariable
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="variableAccession">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string"></xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="metavariable_id" type="xs:int">
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

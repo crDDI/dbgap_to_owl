@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.org/ns#" xmlns="http://example.org/ns#" elementFormDefault="qualified"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0" vc:maxVersion="1.1">
+    <xs:element name="E1">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="opt" minOccurs="0"/>
+                <xs:element name="req"/>
+                <xs:element name="zeroton" minOccurs="0" maxOccurs="2"/>
+                <xs:element name="oneton" maxOccurs="3"/>
+                <xs:element name="minzero" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="minone" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

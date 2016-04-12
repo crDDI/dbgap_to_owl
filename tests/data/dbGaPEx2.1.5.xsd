@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="GaPExchange">
+        <xs:annotation>
+            <xs:documentation>
+                Root element for dbGaP information exchange
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="MetaVariables" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Submitter" maxOccurs="unbounded" minOccurs="1" type="Submitter"> </xs:element>
+                            <xs:element name="Method" maxOccurs="unbounded" minOccurs="1" type="MetaVariableMethod"> </xs:element>
+                            <xs:element name="MetaVariable" minOccurs="0" type="MetaVariable" maxOccurs="unbounded"> </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="MetaLinks" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="MetaLink" maxOccurs="unbounded" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                            Links a variable to a metavariable
+                                        </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="variableAccession">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string"> </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="metavariable_id" type="xs:int">
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Projects" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Project" maxOccurs="unbounded" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Project
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="ID" type="xs:int"> </xs:attribute>
+                                    <xs:attribute name="short_name" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="name" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="entrez_uid" type="xs:int" use="optional">
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Studies" maxOccurs="1" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Study" maxOccurs="unbounded" minOccurs="1" type="Study"> </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:unique name="u1">
+            <xs:selector xpath="*/AuthorizedAccess/Policy"/>
+            <xs:field xpath="@Policy_Id"/>
+        </xs:unique>
+
+        <xs:unique name="u2">
+            <xs:selector xpath="*/AuthorizedAccess/DocInfo"/>
+            <xs:field xpath="@ssDacId"/>
+        </xs:unique>
+
+        <xs:key name="Dackey">
+            <xs:selector xpath="*/AuthorizedAccess/DocInfo"/>
+            <xs:field xpath="@ssDacId"/>
+        </xs:key>
+        <xs:keyref name="Policy_to_Dackey_ref" refer="Dackey">
+            <xs:selector xpath="*/AuthorizedAccess/Policy"/>
+            <xs:field xpath="@ref_ssDacId"/>
+        </xs:keyref>
+
+        <xs:unique name="u3">
+            <xs:selector xpath="*/GenotypeDatasets/Accession"/>
+            <xs:field xpath="ID"/>
+        </xs:unique>
+        <xs:key name="Policykey">
+            <xs:selector xpath="*/AuthorizedAccess/Policy"/>
+            <xs:field xpath="@Policy_Id"/>
+        </xs:key>
+        <xs:keyref name="dataset_to_Policy_ref" refer="Policykey">
+            <xs:selector xpath="*/GenotypeDatasets/Accession"/>
+            <xs:field xpath="ref_Policy_Id"/>
+        </xs:keyref>
+    </xs:element>
+
+    <xs:complexType name="GtyPlatform">
+        <xs:annotation>
+            <xs:documentation>
+                Genotyping or sequencing platform
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Vendor"> </xs:element>
+            <xs:element name="VendorURL"> </xs:element>
+            <xs:element name="Platform"> </xs:element>
+            <xs:element name="Comment" maxOccurs="1" minOccurs="0"> </xs:element>
+
+        </xs:sequence>
+        <xs:attribute name="probeNum"> </xs:attribute>
+        <xs:attribute name="snpBatchId"> </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Variable">
+        <xs:annotation>
+            <xs:documentation>
+                    A vriable is a column of data
+                </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="VariableName"> </xs:element>
+            <xs:element name="Description">
+                <xs:annotation>
+                    <xs:documentation>
+                            Submitter Supplied Variable description
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Comment" minOccurs="0" maxOccurs="1"> </xs:element>
+            <xs:element name="DataType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                            The data type of the values, e.g., integer, decimal, string, etc.
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Units" minOccurs="0" maxOccurs="1"> </xs:element>
+            <xs:element name="LogicalMin" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                            The logical lower limit of the values.
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LogicalMax" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                            The logical upper limit of the values.
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HipaaMin" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                            The minimal value that can be made available to the public users without breaking the HIPAA rules.
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HipaaMax" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                            The maximal value that can be made available to the public users without breaking the HIPAA rules.
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:sequence>
+                <xs:element name="ValueCode" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="code"> </xs:attribute>
+                        <xs:attribute name="meaning"> </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:sequence>
+                <xs:element name="Summary" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Subjects">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                            Counts of individuals.
+                                        </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Nulls"> </xs:element>
+                                        <xs:element name="Nonulls">
+                                            <xs:complexType>
+                                                <xs:attribute name="total" type="xs:int"/>
+                                                <xs:attribute name="males" type="xs:int"/>
+                                                <xs:attribute name="females" type="xs:int"/>
+                                                <xs:attribute name="cases" type="xs:int"/>
+                                                <xs:attribute name="controls" type="xs:int"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Stats">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                            Summary of all the values of the variable.  It is possible that a subject has multiple values.
+                                        </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="nulls" type="xs:int">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                    Number of empty values, including null strings and values with only spaces.
+                                                </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="nonulls" type="xs:int">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                    Number of non-empty values, including valid and invalid values.
+                                                </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="validValues" type="xs:int">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                    Number of valid values for the variable type.  For example, 20, -12 are valid values if the variable type is 'integer'.  'NA' is an invalid value.  Statistics like min, max, mean, SD are calculated based on the valid values.
+                                                </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="maxOccurance" type="xs:int">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                    Maximal number of values collected for a single individual.
+                                                </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="min" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="max" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="mean" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="median" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="stdDev" type="xs:string"> </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="submitted" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>
+                                        Whether the summaries are directly submitted to dbGaP by submitters.
+                                    </xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="consentGroup" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>
+                                        The short name of the consent group like 'GRU'.  'All' represents all consent groups.
+                                    </xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="caseControl" type="xs:string"> </xs:attribute>
+                        <xs:attribute name="createDate" type="xs:date"> </xs:attribute>
+                        <xs:attribute name="modDate" type="xs:date"> </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:sequence>
+
+        <xs:attribute name="uId" type="xs:int"> </xs:attribute>
+        <xs:attribute name="accession">
+            <xs:annotation>
+                <xs:documentation>Variable accession</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string"> </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="createDate" type="xs:date"> </xs:attribute>
+        <xs:attribute name="modDate" type="xs:date"> </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="MetaVariable">
+        <xs:annotation>
+            <xs:documentation>
+                Meta variable from sources like MeSH, SNOMED, PhenX, etc.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="xs:int"> </xs:attribute>
+        <xs:attribute name="method_id" type="xs:int"> </xs:attribute>
+        <xs:attribute name="submitter_id" type="xs:int"> </xs:attribute>
+        <xs:attribute name="vocab_name" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Term used at the metavariable source.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="vocab_source" type="xs:string"> </xs:attribute>
+        <xs:attribute name="mapping" type="xs:string"> </xs:attribute>
+        <xs:attribute name="comment" type="xs:string"> </xs:attribute>
+        <xs:attribute name="UMLS_CUI" type="xs:string"> </xs:attribute>
+        <xs:attribute name="pref_name" type="xs:string"> </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="MetaVariableMethod">
+        <xs:attribute name="id" type="xs:int"> </xs:attribute>
+        <xs:attribute name="method" type="xs:string"> </xs:attribute>
+        <xs:attribute name="comment" type="xs:string"> </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="DataSet">
+        <xs:annotation>
+            <xs:documentation>
+                    dbGaP Dataset, a rectangular table of data where columns are variables and rows are people (and timepoints for longitudinal data).
+                </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="OrigName">
+                <xs:annotation>
+                    <xs:documentation>
+                            Original file name submitted to dbGaP.
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DisplayName">
+                <xs:annotation>
+                    <xs:documentation>
+                            Dataset name displayed on the dataset report page.
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description">
+                <xs:annotation>
+                    <xs:documentation>
+                            Submitter Supplied Document description
+                        </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Comment" minOccurs="0" maxOccurs="1"> </xs:element>
+            <xs:element name="DatasetProjects" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Project" maxOccurs="unbounded" minOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Project
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:attribute name="ID" type="xs:int"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Variables" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Variable" type="Variable" minOccurs="1" maxOccurs="unbounded"> </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="longitudinal" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>
+                        We label a dataset as 'logitudinal' if multiple values were collected for any subject-variable pair.
+                    </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="simulated" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>
+                        Whether the data is simulated or not.
+                    </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="subDatasetType">
+            <xs:annotation>
+                <xs:documentation>
+                        Whether the dataset contains the following information: subject IDs and their consents, pedigree, sample IDs and sample-subject mappings, trace IDs.
+                    </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Consent"/>
+                    <xs:enumeration value="Pedigree"/>
+                    <xs:enumeration value="Sample"/>
+                    <xs:enumeration value="Trace"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="accession">
+            <xs:annotation>
+                <xs:documentation>Dataset accession number</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string"> </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="embargoReleaseDate" type="xs:int"> </xs:attribute>
+        <xs:attribute name="createDate" type="xs:date"> </xs:attribute>
+        <xs:attribute name="modDate" type="xs:date"> </xs:attribute>
+        <xs:attribute name="ddURI" type="xs:anyURI"> </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="DacInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Dac Information directly read from the Submission System
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:sequence>
+            <xs:element name="DacName" maxOccurs="1" minOccurs="1" type="xs:string"/>
+            <xs:element name="DacFullName" maxOccurs="1" minOccurs="1" type="xs:string"/>
+            <xs:element name="DacEmail" maxOccurs="1" minOccurs="1" type="xs:string"/>
+            <xs:element name="DacUrgentEmail" maxOccurs="1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[^@]+@[^\.]+\..+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DacPhone" maxOccurs="1" minOccurs="1" type="xs:string" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>Set nillable to true because there is no phone number available for dbGaP DACs.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DacFax" maxOccurs="1" minOccurs="0" type="xs:string"/>
+
+            <xs:element name="DacUrl" maxOccurs="1" minOccurs="1" type="xs:anyURI">
+                <xs:annotation>
+                    <xs:documentation>For dbGaP, DacUrl points to policyUrl in aa-study-config.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ssDacId" type="xs:string" use="required"/>
+
+
+
+    </xs:complexType>
+
+
+    <xs:complexType name="AuthorizedAccess">
+        <xs:annotation>
+            <xs:documentation>
+                Information related to dbGaP Authorized Access
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:sequence>
+
+
+            <xs:element name="DacInfo" type="DacInfo" minOccurs="1" maxOccurs="unbounded"/>
+
+
+            <xs:element name="Policy" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DisplayResearchStatement" maxOccurs="1" minOccurs="1">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="yes"/>
+                                    <xs:enumeration value="no"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="DisplayPublicSummary" maxOccurs="1" minOccurs="1">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="yes"/>
+                                    <xs:enumeration value="no"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="DataSecurityPlanReqired" maxOccurs="1" minOccurs="0">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="yes"/>
+                                    <xs:enumeration value="no"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="EmbargoLength" maxOccurs="1" minOccurs="1">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="0"/>
+                                    <xs:maxInclusive value="12"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="YearsUntilRenewal" maxOccurs="1" minOccurs="1">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="1"/>
+                                    <xs:maxInclusive value="3"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="WeeksCancelRequest" maxOccurs="1" minOccurs="1">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="1"/>
+                                    <xs:maxInclusive value="8"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="PdfSupplementReqired" maxOccurs="1" minOccurs="0">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="yes"/>
+                                    <xs:enumeration value="no"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="AcknowledgementText">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="para" maxOccurs="unbounded" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="DocumentSet">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Pdf424Component" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:attribute name="Label" type="xs:string"/>
+                                            <xs:attribute name="FilePath" type="xs:string"/>
+                                            <xs:attribute name="FileName" type="xs:string"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="DataUseCertificate" minOccurs="1" maxOccurs="1">
+                                        <xs:complexType>
+                                            <xs:attribute name="Label" type="xs:string"/>
+                                            <xs:attribute name="FilePath" type="xs:string"/>
+                                            <xs:attribute name="FileName" type="xs:string"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+
+                    </xs:sequence>
+
+                    <xs:attribute name="Policy_ID" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>For dbGaP, the policy-id of a study is in a fomat such as phs000001.v1.p1_policy</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="ref_ssDacId" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ConsentGroups" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ParticipantSet" minOccurs="1" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="ConsentName" maxOccurs="1" minOccurs="1" type="xs:string"/>
+                                    <xs:element name="ConsentAbbrev" maxOccurs="1" minOccurs="1" type="xs:string"/>
+
+                                    <xs:element name="UseLimitation" maxOccurs="1" minOccurs="1" type="xs:string"/>
+
+                                    <xs:element name="IrbRequired" maxOccurs="1" minOccurs="1">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Yes"/>
+                                                <xs:enumeration value="No"/>
+                                                <xs:enumeration value="yes"/>
+                                                <xs:enumeration value="no"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:element>
+
+                                </xs:sequence>
+                                <xs:attribute name="groupNum-REF" type="xs:integer"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+
+
+
+    </xs:complexType>
+
+
+
+
+
+
+    <xs:complexType name="Document">
+        <xs:annotation>
+            <xs:documentation>
+                dbGaP Document such as data collection forms or protocols accessioned with a phd accession.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="OrigName" type="xs:string"/>
+            <xs:element name="DisplayName" type="xs:string"/>
+            <xs:element name="Description" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Submitter Supplied Document description
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="displayStatus" maxOccurs="1" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Document displayed on the public website or not. The status corresponding to the "display" field value of StudyDocument table.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="public"/>
+                        <xs:enumeration value="stage-2"/>
+                        <xs:enumeration value="stage-1"/>
+                        <xs:enumeration value="unknown"/>
+                    </xs:restriction>
+                </xs:simpleType>
+
+            </xs:element>
+            <xs:element name="xmlStatus" maxOccurs="1" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Document XML availability. The status corresponding to the "display_xml" field value of StudyDocument table.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="public"/>
+                        <xs:enumeration value="develop"/>
+                        <xs:enumeration value="preview"/>
+                        <xs:enumeration value="unknown"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+
+
+
+        </xs:sequence>
+        <xs:attribute name="uId" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation source="Unique identifier in dbGaP Entrez system">                        
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="phd" use="required">
+            <xs:annotation>
+                <xs:documentation>dbGaP document accession</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="phd\d{6}\.\d+"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="type" type="xs:string" use="required"/>
+        <xs:attribute name="createDate" type="xs:date" use="optional"/>
+        <xs:attribute name="modDate" type="xs:date" use="optional"/>
+        <xs:attribute name="publicURI" type="xs:anyURI"/>
+
+        <xs:attribute name="urlToXml" type="xs:anyURI"/>
+        <xs:attribute name="urlToHtml" type="xs:anyURI"/>
+
+
+
+    </xs:complexType>
+
+
+
+
+    <xs:complexType name="DocumentPart">
+        <xs:annotation>
+            <xs:documentation>
+                Document Part is a section of dbGaP document that is annotated to be associated with one or more dbGaP variables.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="phvList" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="phvRef" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                                <xs:attribute name="variableId" type="xs:integer"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+
+        <xs:attribute name="documentUid" type="xs:integer" use="optional"/>
+        <xs:attribute name="phd">
+            <xs:annotation>
+                <xs:documentation>dbGaP document accession</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="phd\d{6}\.\d+"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="sectionId" type="xs:string"/>
+    </xs:complexType>
+
+
+
+
+
+
+
+
+    <xs:complexType name="Study">
+        <xs:annotation>
+            <xs:documentation>
+                    dbGaP Study
+                </xs:documentation>
+        </xs:annotation>
+
+        <xs:sequence>
+            <xs:element name="Configuration">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Data_Provider" maxOccurs="unbounded" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Data provider
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="StudyNameEntrez">
+                            <xs:annotation>
+                                <xs:documentation>
+                                        Study name displayed on dbGaP Entrez page, usually shorter than the name on study report page.
+                                    </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="StudyNameReportPage">
+                            <xs:annotation>
+                                <xs:documentation>
+                                        Study name displayed on dbGaP study report page.
+                                    </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="StudyTypes" maxOccurs="1" minOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>Multiple StudyTypes for one study is allowed</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="StudyType" maxOccurs="unbounded" minOccurs="1" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>dbGap defined controlled list of study types</xs:documentation>
+                                        </xs:annotation>
+
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Description">
+                            <xs:annotation>
+                                <xs:documentation>
+                                        Submitter Supplied study description
+                                    </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" maxOccurs="1" name="StudyInEx">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Submitter supplied study participant inclusion-exclusion criteria    
+                                    </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="StudyProjects" minOccurs="1" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Project" maxOccurs="unbounded" minOccurs="1">
+                                        <xs:complexType>
+                                            <xs:attribute name="bioproject_id" type="xs:int"/>
+                                            <xs:attribute name="project_name"/>
+                                            <xs:attribute name="project_url">
+                                                <xs:annotation>
+                                                  <xs:documentation>External Project URL</xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Publications" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Publication" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+
+                                                <xs:element name="Journal" minOccurs="0">
+                                                  <xs:complexType>
+                                                  <xs:attribute name="authors" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="title" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="journal" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="journalName" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="year" type="xs:int"> </xs:attribute>
+                                                  <xs:attribute name="volume" type="xs:int"> </xs:attribute>
+                                                  <xs:attribute name="startpg" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="endpg" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="notes" type="xs:string">
+                                                  </xs:attribute>
+                                                  </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="Book" minOccurs="0">
+                                                  <xs:complexType>
+                                                  <xs:attribute name="authors" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="bookName" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="chapterName" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="editors" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="pubCity" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="publisher" type="xs:string"> </xs:attribute>
+                                                  <xs:attribute name="pubYear" type="xs:int"> </xs:attribute>
+                                                  <xs:attribute name="notes" type="xs:string">
+                                                  </xs:attribute>
+                                                  </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="Pubmed" maxOccurs="unbounded" minOccurs="0">
+                                                  <xs:complexType>
+                                                  <xs:attribute name="pmid" type="xs:int"> </xs:attribute>
+                                                  <xs:attribute name="pmidNotes" type="xs:string">
+                                                  </xs:attribute>
+                                                  </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="refComment" type="xs:string">
+                                            </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="TraitCategory" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Trait" maxOccurs="unbounded" minOccurs="1"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Diseases" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Disease" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:attribute name="vocab_source"/>
+                                            <xs:attribute name="vocab_id"> </xs:attribute>
+                                            <xs:attribute name="vocab_term">
+                                                <xs:annotation>
+                                                  <xs:documentation>
+                                                            Mesh Terms and MESH Ids
+                                                        </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Attributions" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Header" maxOccurs="unbounded" minOccurs="1">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="AttName"> </xs:element>
+                                                <xs:element name="Institution"> </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="title"> </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="DisplayResearchStatement" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>yes/no indicator as to whether the research-statements that apply for these data will be publicly displayed in dbGaP.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="yes"/>
+                                    <xs:enumeration value="no"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="DisplayPublicSummary" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>yes/no indicator as to whether the public summary statements that apply for these data will be publicly displayed in dbGaP.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="yes"/>
+                                    <xs:enumeration value="no"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="StudyURLs" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Url" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:attribute name="name"> </xs:attribute>
+                                            <xs:attribute name="url"> </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element minOccurs="0" maxOccurs="1" name="StudyHistory"> </xs:element>
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="StudyFundingSource">
+                            <xs:complexType>
+                                <xs:attribute name="shortName"> </xs:attribute>
+                                <xs:attribute name="fullName"> </xs:attribute>
+                                <xs:attribute name="url"> </xs:attribute>
+                                <xs:attribute name="description"> </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="ConsentGroups" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="ConsentGroup" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                    A subject only belongs to one consent group. For example, a subject can consent to either 'General Research Use (GRU)' or 'Non-Profit Use Only (NPU)', but not both. Data of both GRU and NPU subjects will be made available to non-profit researchers.
+                                                </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:attribute name="groupNum" type="xs:int">
+                                                <xs:annotation>
+                                                  <xs:documentation>
+                                                            An integer assigned to the consent group. It is included in the variable accesssion as c# (e.g., phv00010790.v2.p2.c1).
+                                                        </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                            <xs:attribute name="shortName">
+                                                <xs:annotation>
+                                                  <xs:documentation>
+                                                            A short name like 'GRU'.
+                                                        </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                            <xs:attribute name="longName">
+                                                <xs:annotation>
+                                                  <xs:documentation>
+                                                            A longer name like 'General Reasearch Use'.
+                                                        </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="AuthorizedAccess" type="AuthorizedAccess" minOccurs="1" maxOccurs="1"> </xs:element>
+
+
+            <xs:element name="Documents" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Document" type="Document" maxOccurs="unbounded" minOccurs="1"> </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Annotations" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                            Links a section of the docText to a variable.
+                        </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+
+
+
+
+                        <xs:element name="DocumentPart" type="DocumentPart" maxOccurs="unbounded" minOccurs="0"> </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+
+
+            <xs:element name="Datasets" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Dataset" type="DataSet" minOccurs="1" maxOccurs="unbounded"> </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GenotypeDatasets" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Accession" minOccurs="1" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="GenotypeDataset" maxOccurs="unbounded" minOccurs="1">
+                                        <xs:complexType>
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    dbGaP Genotype Dataset, (add desc here) 
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                            <xs:attribute name="name" type="xs:string"> </xs:attribute>
+                                            <xs:attribute name="description" type="xs:string"> </xs:attribute>
+                                            <xs:attribute name="genotyping_array" type="xs:string"> </xs:attribute>
+                                            <xs:attribute name="data_type" type="xs:string"> </xs:attribute>
+                                            <xs:attribute name="sample_count" type="xs:int">
+                                            </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="ID" type="xs:string" use="required"> </xs:attribute>
+                                <xs:attribute name="ref_Policy_Id" type="xs:string" use="required"/>
+                                <xs:attribute name="Status" type="xs:string" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Analyses" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Analysis" type="Analysis" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="uId" type="xs:int"> </xs:attribute>
+        <xs:attribute name="source">
+            <xs:annotation>
+                <xs:documentation>Source of the data, e.g., dbGaP, EGA</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string"> </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="accession">
+            <xs:annotation>
+                <xs:documentation>Study accession</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string"> </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="parentStudy">
+            <xs:annotation>
+                <xs:documentation>Accession of the parent study</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string"> </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="createDate" type="xs:date"> </xs:attribute>
+        <xs:attribute name="modDate" type="xs:date"> </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Analysis">
+        <xs:annotation>
+            <xs:documentation>
+                    dbGaP Analysis information
+                </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Description"> </xs:element>
+            <xs:element name="Method"> </xs:element>
+            <xs:element name="PerSNPproperties" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                            Analysis summary statistics by each snp
+                        </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="fieldName"> </xs:attribute>
+                    <xs:attribute name="type" type="xs:string"> </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GtyPlatform" type="GtyPlatform" maxOccurs="unbounded" minOccurs="0"> </xs:element>
+            <xs:element name="Variable" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                    <xs:attribute name="name"> </xs:attribute>
+                    <xs:attribute name="accession" type="xs:string"> </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CoVariate" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                    <xs:attribute name="name"> </xs:attribute>
+                    <xs:attribute name="accession"> </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Sample" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="ssType"> </xs:attribute>
+                    <xs:attribute name="size"> </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Comment">
+                <xs:complexType>
+                    <xs:attribute name="type"> </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="pha"> </xs:attribute>
+        <xs:attribute name="uId"> </xs:attribute>
+        <xs:attribute name="genomeBuild"> </xs:attribute>
+        <xs:attribute name="snpBuild"> </xs:attribute>
+        <xs:attribute name="analysisType"> </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Submitter">
+        <xs:annotation>
+            <xs:documentation>
+                Data Access comittee, public information
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id"> </xs:attribute>
+        <xs:attribute name="name"> </xs:attribute>
+        <xs:attribute name="institute"> </xs:attribute>
+        <xs:attribute name="email"> </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="DAC">
+        <xs:annotation>
+            <xs:documentation>
+                Data Access comittee, public information
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Email">
+                <xs:complexType>
+                    <xs:attribute name="normal"> </xs:attribute>
+                    <xs:attribute name="urgent"> </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="name"> </xs:attribute>
+        <xs:attribute name="dac-fax" type="xs:string"> </xs:attribute>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://ncbi.nlm.nih.gov/gap/mms#" xmlns="http://ncbi.nlm.nih.gov/gap/mms#" elementFormDefault="qualified">
+    <xs:complexType name="CT1">
+        <xs:annotation>
+            <xs:documentation>Complex Type 1</xs:documentation>
+        </xs:annotation>
+    </xs:complexType>
+    
+    <xs:element name="E1">
+        <xs:annotation>
+            <xs:documentation>ElementWrapper 1</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="E3">
+        <xs:annotation>
+            <xs:documentation>ElementWrapper 3</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="E1"/>
+            </xs:sequence>
+            <xs:attribute name="A1"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="E2">
+        <xs:annotation>
+            <xs:documentation>ElementWrapper 2</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="E1" type="CT2" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>ElementWrapper 2 ElementWrapper 1 Complex Type 2</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="A1" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>ElementWrapper 2 Attribute 1 Date</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+        
+    </xs:element>
+    
+    <xs:attribute name="A1">
+        <xs:annotation>
+            <xs:documentation>Attribute 1</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+    
+    <xs:simpleType name="ST1">
+        <xs:annotation>
+            <xs:documentation>Simple type 1</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:annotation>
+                <xs:documentation>Restriction 1</xs:documentation>
+            </xs:annotation>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="CT2">
+        <xs:annotation>
+            <xs:documentation>Complex Type 2</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="E3">
+                <xs:annotation>
+                    <xs:documentation>Complex Type 2 ElementWrapper 3 (No type)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="E2" type="CT1">
+                <xs:annotation>
+                    <xs:documentation>Complex Type 2 ElementWrapper 2 (CT1)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="E1">
+                <xs:annotation>
+                    <xs:documentation>Complex Type 2 ElementWrapper 1 (Ref: E1)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute ref="A1">
+            <xs:annotation>
+                <xs:documentation>Complex Type 2 Attribute 1 (No Type)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="A2" type="xs:double">
+            <xs:annotation>
+                <xs:documentation>Complex Type 2 Attribute 2 (double)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="A3">
+            <xs:annotation>
+                <xs:documentation>Complex Type 2 Attribute 3 (No Type)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="A4" type="ST1">
+            <xs:annotation>
+                <xs:documentation>Complex Type 2 Attribute 4 (ST1)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

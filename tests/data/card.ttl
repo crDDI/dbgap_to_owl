@@ -1,0 +1,85 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix gap: <http://ncbi.nlm.nih.gov/gap/mms#> .
+@prefix gapi: <http://ncbi.nlm.nih.gov/gapi/mms#> .
+@prefix iso: <http://iso.org/iso11179-3e3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/ns#E1> a owl:Class ;
+    rdfs:label "GAP E1" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty <http://example.org/ns#E1_req> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty <http://example.org/ns#E1_zeroton> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty <http://example.org/ns#E1_opt> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onClass owl:Thing ;
+            owl:onProperty <http://example.org/ns#E1_minzero> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty <http://example.org/ns#E1_oneton> ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass owl:Thing ;
+            owl:onProperty <http://example.org/ns#E1_minone> ] ;
+    skos:prefLabel "E1" .
+
+gap: a owl:Ontology ;
+    owl:versionIRI <http://ncbi.nlm.nih.gov/gap/mms/v2.1.5> .
+
+<http://example.org/ns#E1_minone> a owl:ObjectProperty ;
+    rdfs:label "GAP E1_minone" ;
+    rdfs:domain <http://example.org/ns#E1_minone> ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "E1_minone" .
+
+<http://example.org/ns#E1_minzero> a owl:ObjectProperty ;
+    rdfs:label "GAP E1_minzero" ;
+    rdfs:domain <http://example.org/ns#E1_minzero> ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "E1_minzero" .
+
+<http://example.org/ns#E1_oneton> a owl:ObjectProperty ;
+    rdfs:label "GAP E1_oneton" ;
+    rdfs:domain <http://example.org/ns#E1_oneton> ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "E1_oneton" .
+
+<http://example.org/ns#E1_opt> a owl:ObjectProperty ;
+    rdfs:label "GAP E1_opt" ;
+    rdfs:domain <http://example.org/ns#E1_opt> ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "E1_opt" .
+
+<http://example.org/ns#E1_req> a owl:ObjectProperty ;
+    rdfs:label "GAP E1_req" ;
+    rdfs:domain <http://example.org/ns#E1_req> ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "E1_req" .
+
+<http://example.org/ns#E1_zeroton> a owl:ObjectProperty ;
+    rdfs:label "GAP E1_zeroton" ;
+    rdfs:domain <http://example.org/ns#E1_zeroton> ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "E1_zeroton" .
+

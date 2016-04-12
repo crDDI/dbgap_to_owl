@@ -1,0 +1,28 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix gap: <http://ncbi.nlm.nih.gov/gap/mms#> .
+@prefix gapi: <http://ncbi.nlm.nih.gov/gapi/mms#> .
+@prefix iso: <http://iso.org/iso11179-3e3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gap: a owl:Ontology ;
+    owl:versionIRI <http://ncbi.nlm.nih.gov/gap/mms/v2.1.5> .
+
+gap:D1 a owl:Class ;
+    rdfs:label "GAP D1" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:D1_A1 ] ;
+    skos:prefLabel "D1" .
+
+gap:D1_A1 a owl:DatatypeProperty ;
+    rdfs:label "GAP D1_A1" ;
+    rdfs:domain gap:D1 ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "D1_A1" .
+

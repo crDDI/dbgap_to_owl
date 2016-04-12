@@ -1,0 +1,162 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix gap: <http://ncbi.nlm.nih.gov/gap/mms#> .
+@prefix gapi: <http://ncbi.nlm.nih.gov/gapi/mms#> .
+@prefix iso: <http://iso.org/iso11179-3e3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gap: a owl:Ontology ;
+    owl:versionIRI <http://ncbi.nlm.nih.gov/gap/mms/v2.1.5> .
+
+gap:E1 a owl:Class ;
+    rdfs:label "GAP E1" ;
+    dc:description "ElementWrapper 1",
+        "XMLSchema datatype U{anyType<http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#key-urType>}." ;
+    skos:prefLabel "E1" .
+
+gap:CT2_A1 a owl:DatatypeProperty ;
+    rdfs:label "GAP CT2_A1" ;
+    dc:description "Attribute 1" ;
+    rdfs:domain gap:CT2 ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "CT2_A1" .
+
+gap:CT2_A2 a owl:DatatypeProperty ;
+    rdfs:label "GAP CT2_A2" ;
+    dc:description "Complex Type 2 Attribute 2 (double)" ;
+    rdfs:domain gap:CT2 ;
+    rdfs:range xsd:double ;
+    skos:prefLabel "CT2_A2" .
+
+gap:CT2_A3 a owl:DatatypeProperty ;
+    rdfs:label "GAP CT2_A3" ;
+    dc:description "Complex Type 2 Attribute 3 (No Type)" ;
+    rdfs:domain gap:CT2 ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "CT2_A3" .
+
+gap:CT2_A4 a owl:DatatypeProperty ;
+    rdfs:label "GAP CT2_A4" ;
+    dc:description "Complex Type 2 Attribute 4 (ST1)" ;
+    rdfs:domain gap:CT2 ;
+    rdfs:range gap:ST1 ;
+    skos:prefLabel "CT2_A4" .
+
+gap:E2 a owl:Class ;
+    rdfs:label "GAP E2" ;
+    dc:description "ElementWrapper 2" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:CT2 ;
+            owl:onClass gap:CT2 ;
+            owl:onProperty gap:E2_E1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty gap:E2_A1 ] ;
+    skos:prefLabel "E2" .
+
+gap:E2_A1 a owl:DatatypeProperty ;
+    rdfs:label "GAP E2_A1" ;
+    dc:description "ElementWrapper 2 Attribute 1 Date" ;
+    rdfs:domain gap:E2 ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "E2_A1" .
+
+gap:E3 a owl:Class ;
+    rdfs:label "GAP E3" ;
+    dc:description "ElementWrapper 3" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:E3_A1 ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:E3_E1 ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "E3" .
+
+gap:E3_A1 a owl:DatatypeProperty ;
+    rdfs:label "GAP E3_A1" ;
+    rdfs:domain gap:E3 ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "E3_A1" .
+
+gap:CT1 a owl:Class ;
+    dc:description "Complex Type 1" .
+
+gap:CT2_E1 a owl:ObjectProperty ;
+    rdfs:label "GAP CT2_E1" ;
+    dc:description "ElementWrapper 1" ;
+    rdfs:domain gap:CT2_E1 ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "CT2_E1" .
+
+gap:CT2_E2 a owl:ObjectProperty ;
+    rdfs:label "GAP CT2_E2" ;
+    dc:description "Complex Type 2 ElementWrapper 2 (CT1)" ;
+    rdfs:domain gap:CT2_E2 ;
+    rdfs:range gap:CT1 ;
+    skos:prefLabel "CT2_E2" .
+
+gap:CT2_E3 a owl:ObjectProperty ;
+    rdfs:label "GAP CT2_E3" ;
+    dc:description "Complex Type 2 ElementWrapper 3 (No type)" ;
+    rdfs:domain gap:CT2_E3 ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "CT2_E3" .
+
+gap:E2_E1 a owl:ObjectProperty ;
+    rdfs:label "GAP E2_E1" ;
+    dc:description "ElementWrapper 2 ElementWrapper 1 Complex Type 2" ;
+    rdfs:domain gap:E2_E1 ;
+    rdfs:range gap:CT2 ;
+    skos:prefLabel "E2_E1" .
+
+gap:E3_E1 a owl:ObjectProperty ;
+    rdfs:label "GAP E3_E1" ;
+    rdfs:domain gap:E3_E1 ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "E3_E1" .
+
+gap:ST1 a owl:Restriction ;
+    dc:description "Simple type 1" ;
+    owl:onDataRange xsd:string .
+
+gap:CT2 rdfs:label "GAP CT2" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:CT2_A1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:CT2_A3 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty gap:CT2_A2 ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:CT2_E3 ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass gap:CT1 ;
+            owl:onProperty gap:CT2_E2 ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange gap:ST1 ;
+            owl:onProperty gap:CT2_A4 ],
+        [ a owl:Restriction ;
+            owl:onClass owl:Thing ;
+            owl:onProperty gap:CT2_E1 ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "CT2" .
+

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.org/ns#" xmlns="http://example.org/ns#" elementFormDefault="qualified"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0" vc:maxVersion="1.1">
+
+    <xs:element name="BareElement">
+        <xs:annotation>
+            <xs:documentation>A bare element</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="BareComplexType">
+        <xs:annotation>
+            <xs:documentation>A bare complex type</xs:documentation>
+        </xs:annotation>
+    </xs:complexType>
+
+    <xs:attribute name="BareAttribute">
+        <xs:annotation>
+            <xs:documentation>A bare attribute</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:element name="StructuredElement">
+        <xs:annotation>
+            <xs:documentation>An element with some structure</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="subElement1" type="BareComplexType">
+                    <xs:annotation>
+                        <xs:documentation>StructuredElement.subElement1 is bare</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="BareElement" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>StructuredElement.BareElement is a ref (pyxb loses this documentation completely)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="at1Bare">
+                <xs:annotation>
+                    <xs:documentation>StructuredElement.at1Bare is an optional bare</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="at2Double" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>StructuredElement.at2Double is an optional double</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="at3RestrictedDouble">
+                <xs:annotation>
+                    <xs:documentation>StructuredElement.at3RestrictedDouble is an optional restricted Double</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:double"/>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="BareAttribute" use="required">
+                <xs:annotation>
+                    <xs:documentation>StructuredElement.BareAttribute is a required bare( pyxb loses this documentation completely)</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="FancyAttribute" type="BigChoice" use="prohibited">
+                <xs:annotation>
+                    <xs:documentation>StructuredElement.BigChoice is a prohipited BigChoice</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="BigChoice">
+        <xs:annotation>
+            <xs:documentation>A choice amongst integers</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>The loneliest number</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>You can only do it if the answer is 2</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="42">
+                <xs:annotation>
+                    <xs:documentation>The answer to everything</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

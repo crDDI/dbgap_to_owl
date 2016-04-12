@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://ncbi.nlm.nih.gov/gap/mms#" xmlns="http://ncbi.nlm.nih.gov/gap/mms#" elementFormDefault="qualified">
+    <xs:element name="D1">
+        <xs:complexType>
+            <xs:attribute name="A1" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

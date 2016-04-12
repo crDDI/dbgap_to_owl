@@ -1,0 +1,138 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix gap: <http://ncbi.nlm.nih.gov/gap/mms#> .
+@prefix gapi: <http://ncbi.nlm.nih.gov/gapi/mms#> .
+@prefix iso: <http://iso.org/iso11179-3e3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gap: a owl:Ontology ;
+    owl:versionIRI <http://ncbi.nlm.nih.gov/gap/mms/v2.1.5> .
+
+<http://example.org/ns#BigChoice_1> a <http://example.org/ns#BigChoice>,
+        owl:NamedIndividual ;
+    owl:hasValue 1 .
+
+<http://example.org/ns#BigChoice_2> a <http://example.org/ns#BigChoice>,
+        owl:NamedIndividual ;
+    owl:hasValue 2 .
+
+<http://example.org/ns#BigChoice_42> a <http://example.org/ns#BigChoice>,
+        owl:NamedIndividual ;
+    owl:hasValue 42 .
+
+<http://example.org/ns#StructuredElement_BareAttribute> a owl:DatatypeProperty ;
+    rdfs:label "GAP StructuredElement_BareAttribute" ;
+    dc:description "A bare attribute" ;
+    rdfs:domain <http://example.org/ns#StructuredElement> ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "StructuredElement_BareAttribute" .
+
+gap:StructuredElement_FancyAttribute a owl:DatatypeProperty ;
+    rdfs:label "GAP StructuredElement_FancyAttribute" ;
+    dc:description "StructuredElement.BigChoice is a prohipited BigChoice" ;
+    rdfs:domain <http://example.org/ns#StructuredElement> ;
+    rdfs:range <http://example.org/ns#BigChoice> ;
+    skos:prefLabel "StructuredElement_FancyAttribute" .
+
+gap:StructuredElement_FancyAttribute_1 a _:N427b2de80efc48358702a0ebb1c07d6d,
+        owl:NamedIndividual ;
+    owl:hasValue 1 .
+
+gap:StructuredElement_FancyAttribute_2 a _:N427b2de80efc48358702a0ebb1c07d6d,
+        owl:NamedIndividual ;
+    owl:hasValue 2 .
+
+gap:StructuredElement_FancyAttribute_42 a _:N427b2de80efc48358702a0ebb1c07d6d,
+        owl:NamedIndividual ;
+    owl:hasValue 42 .
+
+gap:StructuredElement_at1Bare a owl:DatatypeProperty ;
+    rdfs:label "GAP StructuredElement_at1Bare" ;
+    dc:description "StructuredElement.at1Bare is an optional bare" ;
+    rdfs:domain <http://example.org/ns#StructuredElement> ;
+    rdfs:range xsd:anySimpleType ;
+    skos:prefLabel "StructuredElement_at1Bare" .
+
+gap:StructuredElement_at2Double a owl:DatatypeProperty ;
+    rdfs:label "GAP StructuredElement_at2Double" ;
+    dc:description "StructuredElement.at2Double is an optional double" ;
+    rdfs:domain <http://example.org/ns#StructuredElement> ;
+    rdfs:range xsd:double ;
+    skos:prefLabel "StructuredElement_at2Double" .
+
+gap:StructuredElement_at3RestrictedDouble a owl:DatatypeProperty ;
+    rdfs:label "GAP StructuredElement_at3RestrictedDouble" ;
+    dc:description "StructuredElement.at3RestrictedDouble is an optional restricted Double" ;
+    rdfs:domain <http://example.org/ns#StructuredElement> ;
+    rdfs:range xsd:double ;
+    skos:prefLabel "StructuredElement_at3RestrictedDouble" .
+
+<http://example.org/ns#BareComplexType> a owl:Class ;
+    dc:description "A bare complex type" .
+
+<http://example.org/ns#StructuredElement_BareElement> a owl:ObjectProperty ;
+    rdfs:label "GAP StructuredElement_BareElement" ;
+    dc:description "A bare element" ;
+    rdfs:domain <http://example.org/ns#StructuredElement_BareElement> ;
+    rdfs:range owl:Thing ;
+    owl:onProperty owl:Thing ;
+    skos:prefLabel "StructuredElement_BareElement" .
+
+<http://example.org/ns#StructuredElement_subElement1> a owl:ObjectProperty ;
+    rdfs:label "GAP StructuredElement_subElement1" ;
+    dc:description "StructuredElement.subElement1 is bare" ;
+    rdfs:domain <http://example.org/ns#StructuredElement_subElement1> ;
+    rdfs:range <http://example.org/ns#BareComplexType> ;
+    skos:prefLabel "StructuredElement_subElement1" .
+
+<http://example.org/ns#BigChoice> a owl:Restriction ;
+    dc:description "A choice amongst integers" ;
+    owl:onDataRange xsd:int ;
+    owl:oneOf ( <http://example.org/ns#BigChoice_1> <http://example.org/ns#BigChoice_2> <http://example.org/ns#BigChoice_42> ) .
+
+<http://example.org/ns#StructuredElement> a owl:Class ;
+    rdfs:label "GAP StructuredElement" ;
+    dc:description "An element with some structure" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onClass owl:Thing ;
+            owl:onProperty <http://example.org/ns#StructuredElement_BareElement> ],
+        _:N427b2de80efc48358702a0ebb1c07d6d,
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty gap:StructuredElement_at2Double ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty gap:StructuredElement_at1Bare ],
+        [ a owl:Restriction ;
+            owl:onClass <http://example.org/ns#BareComplexType> ;
+            owl:onProperty <http://example.org/ns#StructuredElement_subElement1> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty gap:StructuredElement_at3RestrictedDouble ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anySimpleType ;
+            owl:onProperty <http://example.org/ns#StructuredElement_BareAttribute> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:prefLabel "StructuredElement" .
+
+_:N1d73bb706df84a439b6f5b1a6fbfa3fc rdf:first gap:StructuredElement_FancyAttribute_2 ;
+    rdf:rest ( gap:StructuredElement_FancyAttribute_42 ) .
+
+_:N968a432fe73c4806bcd5a3e5a8dc06c1 rdf:first gap:StructuredElement_FancyAttribute_1 ;
+    rdf:rest _:N1d73bb706df84a439b6f5b1a6fbfa3fc .
+
+_:N427b2de80efc48358702a0ebb1c07d6d a owl:Restriction ;
+    owl:onDataRange <http://example.org/ns#BigChoice> ;
+    owl:onProperty gap:StructuredElement_FancyAttribute ;
+    owl:oneOf _:N968a432fe73c4806bcd5a3e5a8dc06c1 ;
+    owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger .
+

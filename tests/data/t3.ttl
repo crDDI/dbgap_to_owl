@@ -1,0 +1,52 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix gap: <http://ncbi.nlm.nih.gov/gap/mms#> .
+@prefix gapi: <http://ncbi.nlm.nih.gov/gapi/mms#> .
+@prefix iso: <http://iso.org/iso11179-3e3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gap: a owl:Ontology ;
+    owl:versionIRI <http://ncbi.nlm.nih.gov/gap/mms/v2.1.5> .
+
+gap:MetaLinks a owl:Class ;
+    rdfs:label "GAP MetaLinks" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gap:MetaLink ;
+            owl:onClass gap:MetaLink ;
+            owl:onProperty gap:MetaLinks_MetaLink ] ;
+    skos:prefLabel "MetaLinks" .
+
+gap:MetaLink_metavariable_id a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaLink_metavariable_id" ;
+    rdfs:domain gap:MetaLink ;
+    rdfs:range xsd:int ;
+    skos:prefLabel "MetaLink_metavariable_id" .
+
+gap:MetaLink_variableAccession a owl:DatatypeProperty ;
+    rdfs:label "GAP MetaLink_variableAccession" ;
+    rdfs:domain gap:MetaLink ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MetaLink_variableAccession" .
+
+gap:MetaLinks_MetaLink a owl:ObjectProperty ;
+    rdfs:label "GAP MetaLinks_MetaLink" ;
+    dc:description "Links a variable to a metavariable" ;
+    rdfs:domain gap:MetaLinks_MetaLink ;
+    rdfs:range gap:MetaLink ;
+    skos:prefLabel "MetaLinks_MetaLink" .
+
+gap:MetaLink rdfs:label "GAP MetaLink" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty gap:MetaLink_metavariable_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gap:MetaLink_variableAccession ] ;
+    skos:prefLabel "MetaLink" .
+
